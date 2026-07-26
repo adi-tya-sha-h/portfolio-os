@@ -24,7 +24,7 @@ Work in progress — currently building the core window/drag mechanic before add
 
 ## Running Locally
 \`\`\`bash
-git clone https://github.com/adi-tya-sha-a/portfolio-os.git
+git clone https://github.com/adi-tya-sha-h/portfolio-os.git
 cd portfolio-os
 # just open index.html in your browser, or use Live Server
 \`\`\`
