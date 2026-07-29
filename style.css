@@ -3,8 +3,21 @@ body {
     background-repeat:no-repeat;
     background-size:cover;
     background-attachment:fixed; */
-    background:radial-gradient(90rem 60rem at 110% -10%, #f3350c73, #0000 60%), radial-gradient(70rem 50rem at -10% 40%, #5626766b, #0000 55%), radial-gradient(60rem 50rem at 50% 125%, #1c387266, #0000 65%), linear-gradient(160deg, #121214 0%, #1b191f 100%);
+    /* background:radial-gradient(90rem 60rem at 110% -10%, #f3350c73, #0000 60%), radial-gradient(70rem 50rem at -10% 40%, #5626766b, #0000 55%), radial-gradient(60rem 50rem at 50% 125%, #1c387266, #0000 65%), linear-gradient(160deg, #121214 0%, #1b191f 100%); */
     font-family: -apple-system, BlinkMacSystemFont, SF Pro Text, Segoe UI, system-ui, sans-serif; 
+}
+
+.wallpaper{
+    position: fixed;
+    left:0px;
+    top:0px;
+    height: -webkit-fill-available;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: radial-gradient(90rem 60rem at 110% -10%, #f3350c8c, #0000 60%), radial-gradient(70rem 50rem at -10% 40%, #7a1d0580, #0000 55%), linear-gradient(160deg, #2a0f08 0%, #120a08 100%);
+    background-size: cover;
 }
 
 .navbar{
@@ -20,6 +33,7 @@ body {
     backdrop-filter:blur(10px);
     color:white;
     font-size:13px;
+    z-index:1;
     
 }
 .nav-btn{
@@ -76,14 +90,15 @@ footer{
 }
 .dock{
     position:fixed;
-    bottom:1px;
+    bottom:10px;
     height:66px;
     display:flex;
     justify-content:center;
     align-items:center;
-    backdrop-filter:blur(2px);
+    backdrop-filter:blur(40px);
     border:1px solid oklab(100% 0 -0.00011 / 0.593);
     background-color:oklab(100% 0 -0.00011 / 0.029);
+    color:rgb(245, 245, 247);
     border-radius:16px;
     padding:0px 4px;
     transition:padding 0.25s ease-in-out;
@@ -298,7 +313,6 @@ footer{
 }
 
 .window.minimized {
-    transform: scale(0.1) translateY(400px);
     opacity: 0;
     pointer-events: none;
 }

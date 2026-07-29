@@ -81,12 +81,36 @@
         </navbar>
     </header>
     <main>
+        <div class="wallpaper"></div>
         <div class="desktop">
             <div class="tab" id="calander"><h1>26</h1><h2>SUNDAY</h2></div>
-            <div class="tab" id="weather">
-                <h2>🌤 Dehradun</h2>
-                <h1 id="temp"></h1>
-                <p id="condition"></p></div>
+            <div class="tab" id="weather-tab">
+
+                <span id="weather">WEATHER</span>
+
+                <div class="cities">
+
+                    <div class="city-card">
+                        <span class="city">DEHRADUN</span>
+
+                        <div class="temp-row">
+                            <img class="weather-icon" id="weather-icon-dehradun">
+                            <span class="temp" id="temp-dehradun">--°C</span>
+                        </div>
+
+                        <span class="condition" id="condition-dehradun"></span>
+                    </div>
+
+                    <div class="city-card">
+                        <span class="city">DELHI</span>
+                        <div class="temp-row">
+                            <img class="weather-icon" id="weather-icon-delhi">
+                            <span class="temp" id="temp-delhi">--°C</span>
+                        </div>
+                        <span class="condition" id="condition-delhi"></span>
+                    </div>
+                </div>
+            </div>
             <div class="tab" id="bg-music"></div>
         </div>
     </main>
