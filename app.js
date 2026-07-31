@@ -6,30 +6,51 @@ const apps = [
           <button>GitHub</button>
           <button>LinkedIn</button>
     </div>`,
-    top: 60, left: 120 
+    top: 60, left: 340 
   },
   { id: 'appstore',   title: 'App Store',   html:`<div class="app-store">
     <h1>here are some applications that i use</h1>
   </div>`, 
-    top: 80, left: 160 
+    top: 60, left: 345 
   },
   { id: 'spotify', title: 'Spotify', html:`
-    <iframe
-        src="https://open.spotify.com/playlist/6j6HqKATHWhxDn4z8gErvX?si=8772d2bede324e1f"
-        width="100%"
-        height="100%"
-        frameborder="0">
-    </iframe>` ,
-     top: 100, left: 200 
+    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/72FEk3sDYTJatVC9ZYboBZ?utm_source=generator&theme=0&si=cfab8f30aa0a4ac4" width="100%" height="480" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>` ,
+     top: 65, left: 340 
     },
-  { id: 'netflix',   title: 'Netflix',   html: `<div class="netflix"><h2> Here are some of my fav movies and dramas </h2></div>`, top: 120, left: 240 },
-  { id: 'notes',   title: 'Notes',   html:` <div class="notes" contenteditable="true" data-placeholder="Start- Typing"></div>`
-    , top: 140, left: 280 },
-  { id: 'setting', title: 'Settings', html: `<div><h2>settings (; </h2></div>`, top: 160, left: 320 },
-  { id: 'mail', title: 'Mail', html: `<div><h2>if you wanna contact me just dm me on linkedin or mail me at adityashah0989@gmail.com  </h2></div>`, top: 180, left: 360 },
-  { id: 'terminal', title: 'Terminal', html: `<div><h2>@adi's-terminal-welcomes-you-T.T:"write cmd to know the commands of this terminal"</h2></div>`, top: 200, left: 400 },
+  { id: 'netflix',   title: 'Netflix',   html: `<div class="netflix"><h2> Here are some of my fav movies and dramas </h2></div>`, top: 45, left: 310 },
+  { id: 'notes',   title: 'Notes',   html:` <div class="notes">
+            <p class="heading">
+                <span>About Me</span>
+            </p>
+
+            <p class="about-me">
+                Hey!<br>
+                Myself Aditya Shah, a computer science student at Graphic Era Hill University, Dehradun.<br>
+                <br>
+                I'm currently strengthening my foundations in JavaScript, Data Structures & Algorithms, 
+                and modern web development while creating projects that combine functionality with thoughtful design.
+                I enjoy experimenting with animations, intuitive user interfaces, and immersive experiences,
+                such as my macOS-inspired portfolio.
+                <br>
+                <br>
+                Beyond coding, I love turning ideas into reality—whether it's developing creative side projects,
+                 contributing to open source, or continuously learning new technologies. 
+                 My goal is to become a developer who builds products that are both visually
+                 appealing and genuinely useful.
+                 <br>
+                 <br>
+                 When I'm not programming, you'll probably find me solving LeetCode problems, playing games or guitar, watching anime, or trying to fix my sleep schedule T.T .
+                
+            </p>
+        </div>`
+    , top: 60, left: 345 },
+  { id: 'setting', title: 'Settings', html: `<div><h2>settings (; </h2></div>`, top: 80, left: 265 },
+  { id: 'mail', title: 'Mail', html: `<div><h2>if you wanna contact me just dm me on linkedin or mail me at adityashah0989@gmail.com  </h2></div>`, top: 85, left: 260 },
+  { id: 'terminal', title: 'Terminal', html: `<div class="terminal"><pre>Hey!</pre>
+        <pre class="para">Welcome to ADI's Terminal. Write "cmd" to know the commands</pre>
+        <pre class="initcmd">visitor@adi's-os ~ %  </pre></div>`, top: 80, left: 260 },
   { id: 'trash', title: 'Trash', html: `<div><h2>your haters (; </h2></div>`
-    , top: 220, left: 440 }
+    , top: 69, left: 350 }
 ];
 
 
@@ -135,9 +156,9 @@ setInterval(updateClock, 1000);
         <span class="titlebar-label">${title}</span>
       </div>
 
-      <div class="content"
-      ${html}
-    </div>
+      <div class="content">
+        ${html}
+      </div>
     `;
 
   const closeBtn = win.querySelector('.dot.red');
@@ -160,7 +181,13 @@ maximizeBtn.addEventListener('click', () => toggleMaximize(win));
   }
 
 function minimizeWindow(win, id) {
-  const dockIcon = document.getElementById(id); // your dock buttons already use id="spotify" etc.
+  const dockIcon = document.getElementById(id);
+  if (!dockIcon) {
+    win.style.transform = 'scale(0.1)';
+    win.classList.add('minimized');
+    return;
+  }
+
   const winRect = win.getBoundingClientRect();
   const iconRect = dockIcon.getBoundingClientRect();
 
@@ -247,3 +274,4 @@ function toggleMaximize(win) {
     win.classList.add('maximized');
   }
 }
+

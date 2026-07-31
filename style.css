@@ -30,6 +30,7 @@ body {
     justify-content:space-between;
     height:28px;
     background-color:rgba(24, 24, 28, 0.55);
+    -webkit-backdrop-filter:blur(10px);
     backdrop-filter:blur(10px);
     color:white;
     font-size:13px;
@@ -68,6 +69,7 @@ body {
     gap:15px;
 }
 .tab{
+    -webkit-backdrop-filter:blur(40px);
     backdrop-filter:blur(40px);
     background-color:lab(13.9388 1.37861 -4.67547 / 0.6);
     height:122px;
@@ -95,6 +97,7 @@ footer{
     display:flex;
     justify-content:center;
     align-items:center;
+    -webkit-backdrop-filter:blur(40px);
     backdrop-filter:blur(40px);
     border:1px solid oklab(100% 0 -0.00011 / 0.593);
     background-color:oklab(100% 0 -0.00011 / 0.029);
@@ -159,9 +162,10 @@ footer{
 }
 
 .window {
-    height: 320px;
-    width: 380px;
+    height: 550px;
+    width: 820px;
     background-color: rgb(35, 35, 39);
+    -webkit-backdrop-filter:blur(18px);
     backdrop-filter: blur(18px);
     border: 1px solid oklab(100% 0 -0.00011 / 0.593);
     position: absolute;
@@ -187,6 +191,33 @@ footer{
     cursor: grab;
     user-select: none;
     flex-shrink: 0;
+}
+
+.dot::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+}
+
+.dot.green::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M4.5 1.5 L6.5 1.5 L6.5 3.5 Z' fill='%23006400'/%3E%3Cpath d='M3.5 6.5 L1.5 6.5 L1.5 4.5 Z' fill='%23006400'/%3E%3C/svg%3E");
+}
+
+.dot.red::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M1.5 1.5L6.5 6.5M6.5 1.5L1.5 6.5' stroke='%234d0f08' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+.dot.yellow::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M1.5 4H6.5' stroke='%23985712' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+ 
+.titlebar:hover .dot::before {
+    opacity: 1;
 }
 
 .titlebar:active {
@@ -232,11 +263,9 @@ footer{
 #line{
     height:40px;
     width:2px;
-    background-color:oklab(100% 0 -0.00011 / 0.593);
+    background-color: rgba(255, 255, 255, 0.593);
     margin-left:2px;
     margin-right:2px;
-    
-
 }
 
 #weather-tab{
@@ -315,4 +344,41 @@ footer{
 .window.minimized {
     opacity: 0;
     pointer-events: none;
+}
+
+#calander{
+    width:150px;
+    height:150px;
+}
+
+.heading{
+    font-weight:bold;
+    font-size:24px;
+}
+
+.about-me{
+    font-size:16px;
+}
+
+.window[data-app="terminal"] {
+  height: 440px; /* whatever smaller height you want */
+  width:680px;
+  background:black;
+
+}
+
+.content[data-app="terminal"]{
+    background:#191920;
+}
+
+.content pre{
+    padding:0;
+    margin:0;
+}
+.para{
+    color:rgb(255, 176, 158);
+}
+
+.initcmd{
+    color:rgb(155, 224, 155);
 }
