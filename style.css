@@ -192,7 +192,12 @@ footer{
     user-select: none;
     flex-shrink: 0;
 }
-
+.dot{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    position: relative;
+}
 .dot::before {
     content: "";
     width: 7px;
@@ -202,18 +207,22 @@ footer{
     background-position: center;
     opacity: 0;
     transition: opacity 0.1s ease;
+     position: absolute;   
+    top: 50%;              
+    left: 50%;              
+    transform: translate(-50%, -50%);
 }
 
 .dot.green::before {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M4.5 1.5 L6.5 1.5 L6.5 3.5 Z' fill='%23006400'/%3E%3Cpath d='M3.5 6.5 L1.5 6.5 L1.5 4.5 Z' fill='%23006400'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M4.1 1.1 L6.9 1.1 L6.9 3.9 Z' fill='%23003d00'/%3E%3Cpath d='M3.9 6.9 L1.1 6.9 L1.1 4.1 Z' fill='%23003d00'/%3E%3C/svg%3E");
 }
 
 .dot.red::before {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M1.5 1.5L6.5 6.5M6.5 1.5L1.5 6.5' stroke='%234d0f08' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M1.5 1.5L6.5 6.5M6.5 1.5L1.5 6.5' stroke='%232b0502' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
 .dot.yellow::before {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M1.5 4H6.5' stroke='%23985712' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M1.5 4H6.5' stroke='%235c3600' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E");
 }
  
 .titlebar:hover .dot::before {
@@ -222,12 +231,6 @@ footer{
 
 .titlebar:active {
     cursor: grabbing;
-}
-
-.dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
 }
 
 .dot.red { background: #ff5f57; }
