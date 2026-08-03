@@ -385,3 +385,113 @@ footer{
 .initcmd{
     color:rgb(155, 224, 155);
 }
+.window[data-app="netflix"] .content{
+    display:flex;
+    flex-direction:row;
+    background: #000000;
+    padding: 0;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing:2px;
+    color:white;
+}
+
+.netflix {
+    
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.netflix-app {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.netflix-logo{
+    position:relative;
+    top:0px;
+    left:0px;
+    height:20px;
+    width:76px;
+}
+
+.netflix nav{
+    position:sticky;
+    top:20px;
+    left:20px;
+    display:flex;
+    flex-direction:row;
+    gap:40px;
+    padding-left:20px;
+    z-index:1;
+
+}
+
+.netflix button{
+    background:none;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color:white;
+    border:none;
+    font-size:16px;
+    
+}
+
+.title{
+    position:relative;
+    left:12px;
+    font-size:30px;
+}
+.hero{
+    position:relative;
+    top:30px;
+    left:35px;
+    height: 460px;
+    width: 730px;
+    box-shadow:rgba(0, 0, 0, 0.45) 10px 20px 32px 0px;
+    background-image: 
+        linear-gradient(to top, black, transparent 60%),
+        url("/assets/reze.jpg");
+    background-size: cover;
+    background-position: center;
+    border-radius:20px;
+    box-shadow: offset-x offset-y blur-radius blue;
+    
+}
+
+.hero-content {
+    position:relative;
+    left:10px;
+    height: 400px;
+    display: flex;
+    align-items: start;
+    justify-content: end;
+    flex-direction: column;
+    border-radius:20px;
+}
+
+.hero-meta {
+    display: flex;
+    align-items:center;
+    gap: 8px;         /* small gap so items read as a tight cluster */
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.hero-dot{
+    height:5px;
+    width:5px;
+    border-radius:50%;
+    background-color:rgba(255, 255, 255, 0.7);
+
+}
+
+.hero-description {
+    font-size: 14px;
+    max-width: 320px;   
+    line-height: 1.4;
+}

@@ -17,7 +17,44 @@ const apps = [
     <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/72FEk3sDYTJatVC9ZYboBZ?utm_source=generator&theme=0&si=cfab8f30aa0a4ac4" width="100%" height="480" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>` ,
      top: 65, left: 340 
     },
-  { id: 'netflix',   title: 'Netflix',   html: `<div class="netflix"><h2> Here are some of my fav movies and dramas </h2></div>`, top: 45, left: 310 },
+  { id: 'netflix',   title: 'Netflix',   html: `<div class="netflix">
+    <div class="netflix-app">
+            <nav>
+                <div class="netflix-logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="76" height="20" fill="none" viewBox="0 0 370 100"><path fill="#e50914" d="M50.83 93.54V0H35.21v56.77L14.9 0H0v100c5.31-.83 10.31-1.56 15.94-2.19V43.23l17.81 52.4c5.94-.84 11.56-1.15 17.08-2.09m30.84-56.87V15.63h27.6V0H66.04v92.3l43.23-3.45v-15c-9.27.32-18.44 1.05-27.6 1.67V52.3c5.83-.31 13.95-.31 20.83-.31V36.35c-5.52 0-14.8.32-20.83.32m85.73-21.04V0h-48.03v15.63h16.15V87.7c5.1-.21 10.42-.21 15.63-.21V15.63zm25.41 19.9v-19.9h28.34V0H177.4v86.67h15.41V51.15h21.36V35.52zm53.65 37.39V0h-15.63v87.7a930 930 0 0 1 42.2 2.1V74.26c-8.65-.42-17.61-1.14-26.57-1.35m39.79 17.91c5 .32 10.2.52 15.31 1.15V0h-15.31zM370 0h-17.08l-10.94 26.25L331.78 0H314.9l18.23 46.98-20.1 45.83c5.62.73 11.14 1.04 16.76 1.98l11.46-26.56 11.15 28.96c5.93.94 11.77 1.98 17.6 2.81l-19.8-52.4z"><script xmlns=""/></path></svg>
+                </div>
+                <button>Home</button>
+                <button>Movies</button>
+                <button>Genre</button>
+                <button>List</button>
+            </nav>
+            <main>
+              <div class="hero">
+                  <div class="hero-content">
+                      <h1 class="hero-title">Chainsaw Man The Movie:Reze Arc</h1>
+                      <div class="hero-meta">
+                          <span>Series</span>
+                          <span class="hero-dot"></span>
+                          <span>Anime</span>
+                          <span class="hero-dot"></span>
+                          <span>2026</span>
+                          <span class="hero-dot"></span>
+                          <span>5 Episodes</span>
+                      </div>
+                      <p class="hero-description">
+                          When a lost book reappears, a young inventor joins forces with a sake brewer's daughter to bring its electric ideas to life.
+                      </p>
+                      <div class="hero-buttons">
+                          <button class="btn-play">▶ Play</button>
+                          <button class="btn-info">More Info</button>
+                      </div>
+                  </div>
+              </div>
+              <p class="title">My Recommendations</p>
+              
+            </main>
+        </div>
+    </div>`, top: 45, left: 310 },
   { id: 'notes',   title: 'Notes',   html:` <div class="notes">
             <p class="heading">
                 <span>About Me</span>
