@@ -5,6 +5,9 @@ body {
     background-attachment:fixed; */
     /* background:radial-gradient(90rem 60rem at 110% -10%, #f3350c73, #0000 60%), radial-gradient(70rem 50rem at -10% 40%, #5626766b, #0000 55%), radial-gradient(60rem 50rem at 50% 125%, #1c387266, #0000 65%), linear-gradient(160deg, #121214 0%, #1b191f 100%); */
     font-family: -apple-system, BlinkMacSystemFont, SF Pro Text, Segoe UI, system-ui, sans-serif; 
+    -webkit-font-smoothing:antialiased;
+    scrollbar-width:none;
+
 }
 
 .wallpaper{
@@ -104,7 +107,7 @@ footer{
     color:rgb(245, 245, 247);
     border-radius:16px;
     padding:0px 4px;
-    transition:padding 0.25s ease-in-out;
+    /* transition:padding 0.8s ease-in-out; */
 }
 .apps{
     display:flex;
@@ -112,7 +115,7 @@ footer{
     justify-content:center;
     gap:6px;
     padding:10px 15px;
-    transition:gap 0.25s ease-in-out;
+    transition:gap 0.4s ease-in-out;
 
 }
 .apps button{
@@ -174,6 +177,7 @@ footer{
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
     display: flex;
     flex-direction: column;
+    
 }
 
 .window.active {
@@ -253,6 +257,11 @@ footer{
     font-size: 14px;
     line-height: 1.6;
     overflow: auto;
+}
+
+.content::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
 }
 
 .dock:hover{
@@ -393,21 +402,33 @@ footer{
     font-family: "Bebas Neue", sans-serif;
     font-weight: 400;
     font-style: normal;
-    letter-spacing:2px;
+    letter-spacing:1px;
     color:white;
+    padding:0px 10px 0px 10px;
+    scrollbar-width:none;
+}
+
+.netflix-app main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    scrollbar-width:none;
 }
 
 .netflix {
-    
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
+    font-family: "Bebas Neue", sans-serif;
 }
 
 .netflix-app {
     height: 100%;
     display: flex;
     flex-direction: column;
+    
 }
 
 .netflix-logo{
@@ -418,19 +439,24 @@ footer{
     width:76px;
 }
 
-.netflix nav{
-    position:sticky;
-    top:20px;
-    left:20px;
-    display:flex;
-    flex-direction:row;
-    gap:40px;
-    padding-left:20px;
-    z-index:1;
+.netflix-navbar{
+    position: sticky;
+    top: 0%;
+    left: 30%;
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    gap: 5%;
+    padding-left: 2%;
+    z-index: 1;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    padding-bottom: 10px;
+    padding-top: 10px;
+    
 
 }
 
-.netflix button{
+.netflix .nav-button {
     background:none;
     font-family: "Bebas Neue", sans-serif;
     font-weight: 400;
@@ -438,40 +464,42 @@ footer{
     color:white;
     border:none;
     font-size:16px;
+    letter-spacing:inherit;
     
 }
 
-.title{
-    position:relative;
-    left:12px;
+.netflix .title{
     font-size:30px;
+    margin-top: 65px;
+    margin-left: 20px;
+    margin-bottom:10px;
 }
-.hero{
-    position:relative;
-    top:30px;
-    left:35px;
-    height: 460px;
-    width: 730px;
-    box-shadow:rgba(0, 0, 0, 0.45) 10px 20px 32px 0px;
+
+.netflix .hero {
+    position: relative;
+    flex-shrink: 0;
+    margin: 30px 0 0 35px;
+    height: 100%;
+    width: calc(100% - 55px);
+    border-radius: 20px;
     background-image: 
         linear-gradient(to top, black, transparent 60%),
         url("/assets/reze.jpg");
     background-size: cover;
     background-position: center;
-    border-radius:20px;
-    box-shadow: offset-x offset-y blur-radius blue;
     
+    box-shadow: 0px 0px 40px rgb(8 131 232);
 }
 
 .hero-content {
-    position:relative;
-    left:10px;
-    height: 400px;
+    margin-left:5%;
+    margin-bottom:5%;
+    height: 90%;   
     display: flex;
     align-items: start;
     justify-content: end;
     flex-direction: column;
-    border-radius:20px;
+    border-radius: 20px;
 }
 
 .hero-meta {
@@ -494,4 +522,124 @@ footer{
     font-size: 14px;
     max-width: 320px;   
     line-height: 1.4;
+}
+
+.btn-play {
+    border:1px solid white;
+    background:white;   /* Play button is white/light in the reference */
+    color: black;
+    height:32px;
+    width:70px;
+    border-radius:20px;
+    font-family: "Bebas Neue", sans-serif;
+    letter-spacing:1px;
+}
+
+.btn-info {
+    border:1px solid white;
+    background:rgba(24, 24, 28, 0.55);   /* Play button is white/light in the reference */
+    color: white;
+    height:32px;
+    width:70px;
+    border-radius:20px;
+    font-family: "Bebas Neue", sans-serif;
+    letter-spacing:1px;
+}
+
+.row-title {
+    font-size:30px;
+    letter-spacing:2px;
+    margin: 10px 0 10px 20px;   /* matches your existing left-alignment pattern */
+}
+
+.row-scroll {
+    display: flex;              /* same tool as always */
+    flex-direction: row;       /* posters side by side, not stacked */
+    gap: 12px;
+    overflow-x: auto;           /* the property that turns on horizontal scrolling */
+    padding: 0 20px 20px 20px;
+
+}
+
+.row-scroll {
+    /* keep everything you already have */
+    scrollbar-width: none;        /* Firefox */
+}
+
+.row-scroll::-webkit-scrollbar {
+    display: none;                 /* Chrome/Safari/Edge */
+}
+
+.poster-card {
+    flex-shrink: 0;
+    width: 240px;
+    cursor: pointer;
+    padding-top:10px;
+    transition: transform 0.2s ease;
+}
+
+.poster-card:hover {
+    transform: scale(1.05);
+}
+
+.poster-card img {
+    width: 100%;
+    aspect-ratio: 2/1;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    
+}
+
+.poster-card p {
+    font-size: 13px;
+    margin-top: 6px;
+    text-align: center;
+    color: #e5e5e5;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.row-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.scroll-btn {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    height: 30%;
+    max-height: 200px;
+    width: 25px;
+    cursor: pointer;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, opacity 0.2s ease;
+    opacity: 0.5;
+}
+
+.scroll-btn:hover {
+    background: rgba(0, 0, 0, 0.95);
+    opacity: 0.7;
+}
+
+.scroll-left {
+    left: 0;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.scroll-right {
+    right: 0;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
 }

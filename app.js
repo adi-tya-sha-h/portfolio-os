@@ -19,14 +19,14 @@ const apps = [
     },
   { id: 'netflix',   title: 'Netflix',   html: `<div class="netflix">
     <div class="netflix-app">
-            <nav>
+            <nav class="netflix-navbar">
                 <div class="netflix-logo">
                     <svg xmlns="http://www.w3.org/2000/svg" width="76" height="20" fill="none" viewBox="0 0 370 100"><path fill="#e50914" d="M50.83 93.54V0H35.21v56.77L14.9 0H0v100c5.31-.83 10.31-1.56 15.94-2.19V43.23l17.81 52.4c5.94-.84 11.56-1.15 17.08-2.09m30.84-56.87V15.63h27.6V0H66.04v92.3l43.23-3.45v-15c-9.27.32-18.44 1.05-27.6 1.67V52.3c5.83-.31 13.95-.31 20.83-.31V36.35c-5.52 0-14.8.32-20.83.32m85.73-21.04V0h-48.03v15.63h16.15V87.7c5.1-.21 10.42-.21 15.63-.21V15.63zm25.41 19.9v-19.9h28.34V0H177.4v86.67h15.41V51.15h21.36V35.52zm53.65 37.39V0h-15.63v87.7a930 930 0 0 1 42.2 2.1V74.26c-8.65-.42-17.61-1.14-26.57-1.35m39.79 17.91c5 .32 10.2.52 15.31 1.15V0h-15.31zM370 0h-17.08l-10.94 26.25L331.78 0H314.9l18.23 46.98-20.1 45.83c5.62.73 11.14 1.04 16.76 1.98l11.46-26.56 11.15 28.96c5.93.94 11.77 1.98 17.6 2.81l-19.8-52.4z"><script xmlns=""/></path></svg>
                 </div>
-                <button>Home</button>
-                <button>Movies</button>
-                <button>Genre</button>
-                <button>List</button>
+                <button class="nav-button">Home</button>
+                <button class="nav-button">Movies</button>
+                <button class="nav-button">Genre</button>
+                <button class="nav-button">List</button>
             </nav>
             <main>
               <div class="hero">
@@ -51,6 +51,176 @@ const apps = [
                   </div>
               </div>
               <p class="title">My Recommendations</p>
+              <div class="row-wrapper">
+                  <button class="scroll-btn scroll-left">‹</button>
+                  <div class="row-scroll">
+                      <div class="poster-card">
+                        <img src="/assets/series1.webp" alt="">
+                        <p>Breaking Bad</p>
+                    </div>
+                    <div class="poster-card">
+                        <img src="/assets/series2.webp" alt="">
+                        <p>Sex Education</p>
+                    </div>
+                    <div class="poster-card">
+                        <img src="/assets/series3.webp" alt="">
+                        <p>End Of The Fucking World</p>
+                    </div>
+                    <div class="poster-card">
+                        <img src="/assets/series4.webp" alt="">
+                        <p>Show Title 4</p>
+                    </div>
+                    <div class="poster-card">
+                        <img src="/assets/series5.webp" alt="">
+                        <p>Show Title 5</p>
+                    </div>
+                    <div class="poster-card">
+                        <img src="/assets/series6.webp" alt="">
+                        <p>Show Title 6</p>
+                    </div>
+                    <div class="poster-card">
+                        <img src="/assets/series7.webp" alt="">
+                        <p></p>
+                    </div>
+                    <div class="poster-card">
+                        <img src="/assets/series8.avif" alt="">
+                        <p></p>
+                    </div>
+                    <div class="poster-card">
+                        <img src="/assets/series9.webp" alt="">
+                        <p></p>
+                    </div>
+                  </div>
+                  <button class="scroll-btn scroll-right">›</button>
+              </div>
+
+            <div class="rec-section">
+                <p class="row-title">Anime</p>
+                <div class="row-wrapper">
+                    <button class="scroll-btn scroll-left">‹</button>
+                    <div class="row-scroll">
+                        <div class="poster-card">
+                            <img src="/assets/anime1.jpg" alt="">
+                            <p>One Piece</p>
+                        </div>
+                        <div class="poster-card">
+                            <img src="/assets/anime2.jpg" alt="">
+                            <p>Cyberpunk Edgerunners</p>
+                        </div>
+                        <div class="poster-card">
+                            <img src="/assets/anime3.webp" alt="">
+                            <p>DanDaDan</p>
+                        </div>
+                        <div class="poster-card">
+                            <img src="/assets/anime4.webp" alt="">
+                            <p>Frieren:Beyond Journey's End</p>
+                        </div>
+                        <div class="poster-card">
+                            <img src="/assets/anime5.webp" alt="">
+                            <p>Hell's Paradise</p>
+                        </div>
+                        <div class="poster-card">
+                            <img src="/assets/anime6.jpg" alt="">
+                            <p>Attack On Titan</p>
+                        </div>
+                        <div class="poster-card">
+                            <img src="/assets/anime7.jpg" alt="">
+                            <p>Takopi's Original Sin</p>
+                        </div>
+                        <div class="poster-card">
+                            <img src="/assets/anime8.avif" alt="">
+                            <p>Record Of Ragnarok</p>
+                        </div>
+                        <div class="poster-card">
+                            <img src="/assets/anime9.webp" alt="">
+                            <p>Violet Evergarden</p>
+                        </div>
+                        <div class="poster-card">
+                            <img src="/assets/anime10.webp" alt="">
+                            <p>Demon Slayer</p>
+                        </div>
+                    </div>
+                    <button class="scroll-btn scroll-right">›</button>
+                </div>
+            </div>
+            <div class="rec-section">
+                <p class="row-title">Movies</p>
+                <div class="row-wrapper">
+                    <button class="scroll-btn scroll-left">‹</button>
+                    <div class="row-scroll">
+                        <div class="poster-card">
+                            <img src="/assets/movie1.webp" alt="">
+                            <p>The Odyssey</p>
+                        </div>
+                        <div class="poster-card">
+                            <img src="/assets/movie2.jpg" alt="">
+                            <p>(500) days of summer</p>
+                        </div>
+                        <div class="poster-card">
+                            <img src="/assets/movie3.webp" alt="">
+                            <p>Enola Holmes 3</p>
+                        </div>
+                        <div class="poster-card">
+                            <img src="/assets/movie4.webp" alt="">
+                            <p>Adolescence</p>
+                        </div>
+                        <div class="poster-card">
+                            <img src="/assets/movie5.webp" alt="">
+                            <p>Grave Of The Fireflies</p>
+                        </div>
+                        <div class="poster-card">
+                            <img src="/assets/movie6.jpg" alt="">
+                            <p>Parasite</p>
+                        </div>
+                    </div>
+                    <button class="scroll-btn scroll-right">›</button>
+                </div>
+            </div>
+            <div class="rec-section">
+                <p class="row-title">Drama</p>
+                <div class="row-wrapper">
+                    <button class="scroll-btn scroll-left">‹</button>
+                    <div class="row-scroll">
+                        <div class="poster-card">
+                            <img src="/assets/drama1.webp" alt="">
+                            <p>When Life Gives You Tangerines</p>
+                        </div>
+                        <div class="poster-card">
+                            <img src="/assets/drama2.webp" alt="">
+                            <p>The 8 Show</p>
+                        </div>
+                        <div class="poster-card">
+                            <img src="/assets/drama3.webp" alt="">
+                            <p>If Wishes Could Kill Us</p>
+                        </div>
+                        <div class="poster-card">
+                            <img src="/assets/drama4.webp" alt="">
+                            <p>Squid Game</p>
+                        </div>
+                        <div class="poster-card">
+                            <img src="/assets/drama5.webp" alt="">
+                            <p>The Glory</p>
+                        </div>
+                        <div class="poster-card">
+                            <img src="/assets/drama6.jpg" alt="">
+                            <p>All Of Us Are Dead</p>
+                        </div>
+                        <div class="poster-card">
+                            <img src="/assets/drama7.jpg" alt="">
+                            <p>Alice In The Borderland</p>
+                        </div>
+                        <div class="poster-card">
+                            <img src="/assets/drama8.jpg" alt="">
+                            <p>Weak Hero</p>
+                        </div>
+                        <div class="poster-card">
+                            <img src="/assets/drama9.jpg" alt="">
+                            <p>All Of Us Are Dead</p>
+                        </div>
+                    </div>
+                    <button class="scroll-btn scroll-right">›</button>
+                </div>
+            </div>
               
             </main>
         </div>
@@ -86,7 +256,7 @@ const apps = [
   { id: 'terminal', title: 'Terminal', html: `<div class="terminal"><pre>Hey!</pre>
         <pre class="para">Welcome to ADI's Terminal. Write "cmd" to know the commands</pre>
         <pre class="initcmd">visitor@adi's-os ~ %  </pre></div>`, top: 80, left: 260 },
-  { id: 'trash', title: 'Trash', html: `<div><h2>your haters (; </h2></div>`
+  { id: 'trash', title: 'Trash', html: `<div><p>Your Haters</p></div>`
     , top: 69, left: 350 }
 ];
 
@@ -306,9 +476,28 @@ function toggleMaximize(win) {
     // then overwrite win.style directly (not win.dataset.style!)
     win.style.top = '28px';
     win.style.left = '0px';
-    win.style.width = '100vw';
-    win.style.height = 'calc(100vh - 28px)';
+    win.style.width = '99.8vw';
+    win.style.height = 'calc(100vh - 30px)';
     win.classList.add('maximized');
   }
 }
 
+// Global delegated scroll button listener for dynamic windows
+document.addEventListener('click', (e) => {
+    const leftBtn = e.target.closest('.scroll-left');
+    const rightBtn = e.target.closest('.scroll-right');
+
+    if (leftBtn) {
+        const wrapper = leftBtn.closest('.row-wrapper');
+        const row = wrapper ? wrapper.querySelector('.row-scroll') : null;
+        if (row) {
+            row.scrollBy({ left: -300, behavior: 'smooth' });
+        }
+    } else if (rightBtn) {
+        const wrapper = rightBtn.closest('.row-wrapper');
+        const row = wrapper ? wrapper.querySelector('.row-scroll') : null;
+        if (row) {
+            row.scrollBy({ left: 300, behavior: 'smooth' });
+        }
+    }
+});
