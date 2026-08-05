@@ -469,10 +469,10 @@ footer{
 }
 
 .netflix .title{
-    font-size:30px;
-    margin-top: 65px;
-    margin-left: 20px;
-    margin-bottom:10px;
+    font-size: 35px;
+    margin-top: 60px;
+    margin-left: 12px;
+    margin-bottom:0px;
 }
 
 .netflix .hero {
@@ -547,7 +547,7 @@ footer{
 }
 
 .row-title {
-    font-size:30px;
+    font-size:25px;
     letter-spacing:2px;
     margin: 10px 0 10px 20px;   /* matches your existing left-alignment pattern */
 }
@@ -642,4 +642,10 @@ footer{
     right: 0;
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
+}
+.footer-disclaimer{
+    color: #757575;
+    font-size: 11px;
+    text-align: center;
+    padding: 20px 0;
 }

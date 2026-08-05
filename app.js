@@ -14,32 +14,33 @@ const apps = [
     top: 60, left: 345 
   },
   { id: 'spotify', title: 'Spotify', html:`
-    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/72FEk3sDYTJatVC9ZYboBZ?utm_source=generator&theme=0&si=cfab8f30aa0a4ac4" width="100%" height="480" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>` ,
+    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/72FEk3sDYTJatVC9ZYboBZ?utm_source=generator&theme=0&si=cfab8f30aa0a4ac4" width="100%" height="100%" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>` ,
      top: 65, left: 340 
     },
-  { id: 'netflix',   title: 'Netflix',   html: `<div class="netflix">
-    <div class="netflix-app">
+  { id: 'netflix',   title: 'Netflix',   html: `
+    <div class="netflix">
+        <div class="netflix-app">
             <nav class="netflix-navbar">
                 <div class="netflix-logo">
                     <svg xmlns="http://www.w3.org/2000/svg" width="76" height="20" fill="none" viewBox="0 0 370 100"><path fill="#e50914" d="M50.83 93.54V0H35.21v56.77L14.9 0H0v100c5.31-.83 10.31-1.56 15.94-2.19V43.23l17.81 52.4c5.94-.84 11.56-1.15 17.08-2.09m30.84-56.87V15.63h27.6V0H66.04v92.3l43.23-3.45v-15c-9.27.32-18.44 1.05-27.6 1.67V52.3c5.83-.31 13.95-.31 20.83-.31V36.35c-5.52 0-14.8.32-20.83.32m85.73-21.04V0h-48.03v15.63h16.15V87.7c5.1-.21 10.42-.21 15.63-.21V15.63zm25.41 19.9v-19.9h28.34V0H177.4v86.67h15.41V51.15h21.36V35.52zm53.65 37.39V0h-15.63v87.7a930 930 0 0 1 42.2 2.1V74.26c-8.65-.42-17.61-1.14-26.57-1.35m39.79 17.91c5 .32 10.2.52 15.31 1.15V0h-15.31zM370 0h-17.08l-10.94 26.25L331.78 0H314.9l18.23 46.98-20.1 45.83c5.62.73 11.14 1.04 16.76 1.98l11.46-26.56 11.15 28.96c5.93.94 11.77 1.98 17.6 2.81l-19.8-52.4z"><script xmlns=""/></path></svg>
                 </div>
                 <button class="nav-button">Home</button>
-                <button class="nav-button">Movies</button>
-                <button class="nav-button">Genre</button>
-                <button class="nav-button">List</button>
+                <button class="nav-button">Shows</button>
+                <button class="nav-button">Moives</button>
+                <button class="nav-button">My List</button>
             </nav>
             <main>
               <div class="hero">
                   <div class="hero-content">
-                      <h1 class="hero-title">Chainsaw Man The Movie:Reze Arc</h1>
+                      <h1 class="hero-title">Chainsaw Man The Movie: Reze Arc</h1>
                       <div class="hero-meta">
-                          <span>Series</span>
+                          <span>Movie</span>
                           <span class="hero-dot"></span>
                           <span>Anime</span>
                           <span class="hero-dot"></span>
                           <span>2026</span>
                           <span class="hero-dot"></span>
-                          <span>5 Episodes</span>
+                          <span>1 Episodes</span>
                       </div>
                       <p class="hero-description">
                           When a lost book reappears, a young inventor joins forces with a sake brewer's daughter to bring its electric ideas to life.
@@ -51,6 +52,7 @@ const apps = [
                   </div>
               </div>
               <p class="title">My Recommendations</p>
+              <p class="row-title">Shows</p>
               <div class="row-wrapper">
                   <button class="scroll-btn scroll-left">‹</button>
                   <div class="row-scroll">
@@ -59,37 +61,43 @@ const apps = [
                         <p>Breaking Bad</p>
                     </div>
                     <div class="poster-card">
-                        <img src="/assets/series2.webp" alt="">
-                        <p>Sex Education</p>
+                        <img src="/assets/series10.jpg" alt="">
+                        <p>Game Of Thrones</p>
                     </div>
+                    
                     <div class="poster-card">
                         <img src="/assets/series3.webp" alt="">
                         <p>End Of The Fucking World</p>
                     </div>
                     <div class="poster-card">
                         <img src="/assets/series4.webp" alt="">
-                        <p>Show Title 4</p>
+                        <p>Dexter</p>
                     </div>
                     <div class="poster-card">
-                        <img src="/assets/series5.webp" alt="">
-                        <p>Show Title 5</p>
+                        <img src="/assets/series5.jpg" alt="">
+                        <p>Money Heist</p>
                     </div>
                     <div class="poster-card">
-                        <img src="/assets/series6.webp" alt="">
-                        <p>Show Title 6</p>
+                        <img src="/assets/series2.webp" alt="">
+                        <p>Sex Education</p>
                     </div>
                     <div class="poster-card">
-                        <img src="/assets/series7.webp" alt="">
-                        <p></p>
+                        <img src="/assets/series6.jpg" alt="">
+                        <p>Stranger Things</p>
                     </div>
                     <div class="poster-card">
-                        <img src="/assets/series8.avif" alt="">
-                        <p></p>
+                        <img src="/assets/series7.jpg" alt="">
+                        <p>Outlander</p>
                     </div>
                     <div class="poster-card">
-                        <img src="/assets/series9.webp" alt="">
-                        <p></p>
+                        <img src="/assets/series8.webp" alt="">
+                        <p>Never Have I Ever</p>
                     </div>
+                    <div class="poster-card">
+                        <img src="/assets/series9.jpg" alt="">
+                        <p>Peaky Blinders</p>
+                    </div>
+                    
                   </div>
                   <button class="scroll-btn scroll-right">›</button>
               </div>
@@ -153,8 +161,16 @@ const apps = [
                             <p>The Odyssey</p>
                         </div>
                         <div class="poster-card">
+                            <img src="/assets/movie6.jpg" alt="">
+                            <p>Parasite</p>
+                        </div>
+                        <div class="poster-card">
                             <img src="/assets/movie2.jpg" alt="">
                             <p>(500) days of summer</p>
+                        </div>
+                        <div class="poster-card">
+                            <img src="/assets/movie13.webp" alt="">
+                            <p>Saiyara</p>
                         </div>
                         <div class="poster-card">
                             <img src="/assets/movie3.webp" alt="">
@@ -168,10 +184,32 @@ const apps = [
                             <img src="/assets/movie5.webp" alt="">
                             <p>Grave Of The Fireflies</p>
                         </div>
+                        
                         <div class="poster-card">
-                            <img src="/assets/movie6.jpg" alt="">
-                            <p>Parasite</p>
+                            <img src="/assets/movie7.webp" alt="">
+                            <p>Dhurandhar</p>
                         </div>
+                        <div class="poster-card">
+                            <img src="/assets/movie8.webp" alt="">
+                            <p>Yeh Jawani Hai Diwani</p>
+                        </div>
+                        <div class="poster-card">
+                            <img src="/assets/movie9.webp" alt="">
+                            <p>Laapataa Ladies</p>
+                        </div>
+                        <div class="poster-card">
+                            <img src="/assets/movie10.jpg" alt="">
+                            <p>Voicemails For Isabelle</p>
+                        </div>
+                        <div class="poster-card">
+                            <img src="/assets/movie11.webp" alt="">
+                            <p>Final Destination</p>
+                        </div>
+                        <div class="poster-card">
+                            <img src="/assets/movie12.jpg" alt="">
+                            <p>The Great Flood</p>
+                        </div>
+                        
                     </div>
                     <button class="scroll-btn scroll-right">›</button>
                 </div>
@@ -215,14 +253,17 @@ const apps = [
                         </div>
                         <div class="poster-card">
                             <img src="/assets/drama9.jpg" alt="">
-                            <p>All Of Us Are Dead</p>
+                            <p>Sweet Home</p>
                         </div>
                     </div>
                     <button class="scroll-btn scroll-right">›</button>
                 </div>
             </div>
-              
+            <footer class="footer-disclaimer">
+                <span>© 2026 Netflix.<br>This is a independent portfolio project and is not affiliated with, endorsed by, or connected to Netflix, Inc.<br>All Netflix trademarks, logos, and content are property of their respective owners.</span>
+            </footer>
             </main>
+            
         </div>
     </div>`, top: 45, left: 310 },
   { id: 'notes',   title: 'Notes',   html:` <div class="notes">
