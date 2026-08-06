@@ -103,7 +103,7 @@ footer{
     -webkit-backdrop-filter:blur(40px);
     backdrop-filter:blur(40px);
     border:1px solid oklab(100% 0 -0.00011 / 0.593);
-    background-color:oklab(100% 0 -0.00011 / 0.029);
+    background-color:#555;
     color:rgb(245, 245, 247);
     border-radius:16px;
     padding:0px 4px;
@@ -264,10 +264,6 @@ footer{
     height: 0px;
 }
 
-.dock:hover{
-    padding:0px 15px;
-}
-
 .dock:hover .apps{
     gap:15px;
 }
@@ -356,11 +352,6 @@ footer{
 .window.minimized {
     opacity: 0;
     pointer-events: none;
-}
-
-#calander{
-    width:150px;
-    height:150px;
 }
 
 .heading{
@@ -648,4 +639,115 @@ footer{
     font-size: 11px;
     text-align: center;
     padding: 20px 0;
+}
+
+#time{
+    width:150px;
+    height:150px;
+}
+#time .title{
+    font-size:13px;
+    margin:0;
+    font-weight:bold;
+    padding-bottom:10px;
+}
+
+#india-time{
+    color:white;
+    font-size: 32px;
+    margin: 0;
+    position: absolute;
+    bottom: 12px;
+    text-transform: uppercase;
+}
+.location{
+    position:absolute;
+    bottom:57px;
+    font-size:12px;
+    display: flex;
+    align-items: center;
+    gap:3px;
+}
+.tab-dot{
+    display:inline-block;
+    height:6px;
+    width:6px;
+    border-radius:50%;
+    background-color:red;
+}
+.location .tab-dot{
+    display:inline-block;
+    height:6px;
+    width:6px;
+    border-radius:50%;
+    background-color:red;
+}
+#weather{
+    font-size:13px;
+}
+#calander{
+    width:150px;
+    height:150px;
+}
+#music{
+    display: flex;
+    flex-direction: row;
+}
+#music img{
+    border-radius: 12px;
+    height: 100%;
+    width: 45%;
+}
+
+#music button{
+    background:none;
+    border:none;
+    color:white;
+    cursor:pointer;
+}
+
+.music-content{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    margin:16px;
+}
+
+.song-name{
+    color:white;
+    font-size:12px;
+}
+.progress-container{
+    margin-top:10px;
+    height:2px;
+    width:100%;
+    background:#ffffff69;
+    opacity:0.6;
+}
+.icon-pause{
+    display:none;
+}
+.progress-bar{
+    position:relative;
+    z-index:3;
+    background-color:white;
+    width:40%;
+    height:100%;
+}
+
+.play-pause-btn.playing .icon-play {
+    display: none;
+}
+.play-pause-btn.playing .icon-pause {
+    display: inline-flex;
+}
+
+.spotify-logo{
+    position:absolute;
+    top:10px;
+    right:10px;
+}
+#spotify-embed{
+    display:none;
 }

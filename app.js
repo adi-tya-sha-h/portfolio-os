@@ -301,6 +301,12 @@ const apps = [
     , top: 69, left: 350 }
 ];
 
+const nowPlaying = {
+  title: "Sirf Tujhse",
+  artist: "Saksham Sehgal",
+  albumArt: "/assets/sirftujhse.png", 
+  duration: 180 
+};
 
 const API_KEY = "17cc714df1ea4a27b7883100262607";
 
@@ -346,6 +352,16 @@ function updateClock() {
     hours = hours ? hours : 12;
     
     document.getElementById("clock").innerHTML = `${dayName} ${monthName} ${dateNum}&nbsp;&nbsp;${hours}:${minutes} ${ampm}`;
+
+    const indiaTime = new Intl.DateTimeFormat("en-IN", {
+        timeZone: "Asia/Kolkata",
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true
+    }).format(now);
+
+    document.getElementById("india-time").textContent = indiaTime
+
 }
 
 updateClock();
@@ -542,3 +558,58 @@ document.addEventListener('click', (e) => {
         }
     }
 });
+
+const playPauseBtn=document.querySelector(".play-pause-btn");
+const progressBar=document.querySelector(".progress-bar");
+
+// playPauseBtn.addEventListener("click",()=>{
+//     playPauseBtn.classList.toggle("playing");
+
+//     if (playPauseBtn.classList.contains('playing')) {
+//         timer = setInterval(updateProgress, 1000);
+//     } else {
+//         clearInterval(timer);
+//     }
+// });
+
+playPauseBtn.addEventListener('click', () => {
+    if (!window.spotifyController) return; // safety check, in case it hasn't loaded yet
+
+    if (playPauseBtn.classList.contains('playing')) {
+        window.spotifyController.pause();
+    } else {
+        window.spotifyController.play();
+    }
+
+    playPauseBtn.classList.toggle('playing');
+});
+
+let elapsed = 0; // seconds played so far
+let timer = null; // will hold our interval reference
+
+function updateProgress() {
+    elapsed++;
+    const percent = (elapsed / nowPlaying.duration) * 100;
+    progressBar.style.width = percent + '%';
+
+    if (elapsed >= nowPlaying.duration) {
+        clearInterval(timer);
+    }
+}
+
+window.onSpotifyIframeApiReady = (IFrameAPI) => {
+    const element = document.getElementById('spotify-embed');
+    const options = {
+        uri: 'spotify:track:5zICn0hbsUvZBpHeffRQcj'
+    };
+
+    IFrameAPI.createController(element, options, (EmbedController) => {
+        // we'll use EmbedController here to play/pause
+        window.spotifyController = EmbedController;
+        EmbedController.addListener('playback_update', (e) => {
+            const { position, duration } = e.data;
+            const percent = (position / duration) * 100;
+            progressBar.style.width = percent + '%';
+        });
+    });
+};

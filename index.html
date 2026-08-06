@@ -85,7 +85,8 @@
     <main>
         <div class="wallpaper"></div>
         <div class="desktop">
-            <div class="tab" id="calander"></div>
+            <div class="tab" id="calander">
+                </div>
             <div class="tab" id="weather-tab">
 
                 <span id="weather">WEATHER</span>
@@ -113,7 +114,120 @@
                     </div>
                 </div>
             </div>
-            <div class="tab" id="bg-music"></div>
+            <div id="spotify-embed"></div>
+            <div class="tab" id="music">
+                <img src="assets/sirftujhse.png" alt="Sirf Tujhse cover">
+                <div class="music-content">
+                    <div class="spotify-logo"><svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     width="24"
+     height="24"
+     fill="none">
+  <!-- Translucent grey circle badge -->
+  <circle cx="12" cy="12" r="12" fill="#FFFFFF" fill-opacity="0.15"/>
+  <!-- Spotify sound waves -->
+  <path d="M6.6 8.9C9.9 7.9 14.9 8.1 17.9 9.9"
+        stroke="#FFFFFF"
+        stroke-opacity="0.5"
+        stroke-width="1.6"
+        stroke-linecap="round"/>
+  <path d="M6.9 12.1C9.6 11.3 14.1 11.2 16.7 12.8"
+        stroke="#FFFFFF"
+        stroke-opacity="0.5"
+        stroke-width="1.5"
+        stroke-linecap="round"/>
+  <path d="M7.3 15.2C9.4 14.6 13.1 14.5 15.3 15.7"
+        stroke="#FFFFFF"
+        stroke-opacity="0.5"
+        stroke-width="1.3"
+        stroke-linecap="round"/>
+</svg></div>
+                    <div class="song-name">Sirf Tujhse</div>
+                    <div class="song-info">Saksham Sehgal</div>
+                    <div class="progress-container">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <div class="music-controls">
+                        <button class="prev-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                height="24"
+                                fill="white">
+
+                            <path d="
+                            M11.7 12
+                            C11.7 11.8 11.8 11.6 12.0 11.4
+                            L17.9 7.3
+                            C18.9 6.6 19.7 7.1 19.7 8.2
+                            V15.8
+                            C19.7 16.9 18.9 17.4 17.9 16.7
+                            L12.0 12.6
+                            C11.8 12.4 11.7 12.2 11.7 12Z
+
+                            M5.3 12
+                            C5.3 11.8 5.4 11.6 5.6 11.4
+                            L11.5 7.3
+                            C12.5 6.6 13.3 7.1 13.3 8.2
+                            V15.8
+                            C13.3 16.9 12.5 17.4 11.5 16.7
+                            L5.6 12.6
+                            C5.4 12.4 5.3 12.2 5.3 12Z"/>
+                            </svg>
+                        </button>
+                        <button class="play-pause-btn">
+                            <span class="icon-play">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z"/></svg>
+                            </span>
+                            <span class="icon-pause">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                            <rect x="6" y="5" width="4" height="14" rx="1"/>
+                            <rect x="14" y="5" width="4" height="14" rx="1"/>
+                            </svg>
+                            </span>
+                        </button>
+                        <button class="next-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                height="24"
+                                fill="white">
+                            <g transform="translate(24,0) scale(-1,1)">
+                            <path d="
+                            M11.7 12
+                            C11.7 11.8 11.8 11.6 12.0 11.4 
+                            L17.9 7.3
+                            C18.9 6.6 19.7 7.1 19.7 8.2
+                            V15.8
+                            C19.7 16.9 18.9 17.4 17.9 16.7
+                            L12.0 12.6
+                            C11.8 12.4 11.7 12.2 11.7 12Z
+                            M5.3 12
+                            C5.3 11.8 5.4 11.6 5.6 11.4
+                            L11.5 7.3
+                            C12.5 6.6 13.3 7.1 13.3 8.2
+                            V15.8
+                            C13.3 16.9 12.5 17.4 11.5 16.7
+                            L5.6 12.6
+                            C5.4 12.4 5.3 12.2 5.3 12Z"/>
+                            </g>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="tab" id="time">
+                <p class="title">CLOCK</p>
+
+                <div class="location">
+                    <span class="tab-dot"></span>
+                    <span>DELHI</span>
+                </div>
+
+                <h1 id="india-time"></h1>
+            </div>
         </div>
         
         
@@ -140,6 +254,7 @@
         </div>
     </footer>
     <script src="app.js"></script>
+    <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
 </body>
 
 </html>
