@@ -444,6 +444,10 @@ maximizeBtn.addEventListener('click', () => toggleMaximize(win));
     return win;
   }
 
+function toggleMaximize(win) {
+  win.classList.toggle('maximized');
+}
+
 function minimizeWindow(win, id) {
   const dockIcon = document.getElementById(id);
   if (!dockIcon) {
@@ -559,6 +563,8 @@ document.addEventListener('click', (e) => {
     }
 });
 
+
+
 const playPauseBtn=document.querySelector(".play-pause-btn");
 const progressBar=document.querySelector(".progress-bar");
 
@@ -572,44 +578,84 @@ const progressBar=document.querySelector(".progress-bar");
 //     }
 // });
 
-playPauseBtn.addEventListener('click', () => {
-    if (!window.spotifyController) return; // safety check, in case it hasn't loaded yet
+if (playPauseBtn) {
+    playPauseBtn.addEventListener('click', () => {
+        if (!window.spotifyController) return;
 
-    if (playPauseBtn.classList.contains('playing')) {
-        window.spotifyController.pause();
-    } else {
-        window.spotifyController.play();
-    }
-
-    playPauseBtn.classList.toggle('playing');
-});
-
-let elapsed = 0; // seconds played so far
-let timer = null; // will hold our interval reference
-
-function updateProgress() {
-    elapsed++;
-    const percent = (elapsed / nowPlaying.duration) * 100;
-    progressBar.style.width = percent + '%';
-
-    if (elapsed >= nowPlaying.duration) {
-        clearInterval(timer);
-    }
+        if (playPauseBtn.classList.contains('playing')) {
+            window.spotifyController.pause();
+        } else {
+            window.spotifyController.play();
+        }
+        playPauseBtn.classList.toggle('playing');
+    });
 }
 
 window.onSpotifyIframeApiReady = (IFrameAPI) => {
     const element = document.getElementById('spotify-embed');
+    if (!element) return;
     const options = {
         uri: 'spotify:track:5zICn0hbsUvZBpHeffRQcj'
     };
-
     IFrameAPI.createController(element, options, (EmbedController) => {
-        // we'll use EmbedController here to play/pause
         window.spotifyController = EmbedController;
         EmbedController.addListener('playback_update', (e) => {
-            const { position, duration } = e.data;
-            const percent = (position / duration) * 100;
-            progressBar.style.width = percent + '%';
+            const { position, duration, isPaused } = e.data;
+            if (progressBar && duration > 0) {
+                const percent = (position / duration) * 100;
+                progressBar.style.width = percent + '%';
+            }
+            if (playPauseBtn && isPaused !== undefined) {
+                playPauseBtn.classList.toggle('playing', !isPaused);
+            }
         });
     });
 };
+
+const songs=[
+    {title:'Sirf Tujhse' ,artist:'Saksham Sehgal',albumArt:"assets/sirftujhse.png",uri:"spotify:track:5zICn0hbsUvZBpHeffRQcj"},
+    {title:'Petels On The Moon',artist:'Wasia Project',albumArt:"assets/song1.jpg",uri:"spotify:track:26qigRagi9CRNhbGYajKOS"},
+    {title:'Seasons',artist:'Wave To Earth',albumArt:"assets/song2.jpg",uri:"spotify:track:0aVd7QiY8BstysHb62c5Fi"},
+    {title:'REDRED',artist:'CORTIS',albumArt:"assets/song3.jpg",uri:"spotify:track:2fCwv2ppU5nTRTckomIGsd"}
+];
+
+const prevbtn=document.querySelector(".prev-btn");
+const nextbtn=document.querySelector(".next-btn");
+
+let currentIndex=0;
+
+function loadTrack() {
+    const song = songs[currentIndex];
+
+    document.querySelector('#music img').src = song.albumArt;
+    document.querySelector('.song-name').textContent = song.title;
+    document.querySelector('.song-info').textContent = song.artist;
+
+    if (window.spotifyController) {
+        window.spotifyController.loadUri(song.uri);
+        window.spotifyController.play();
+    }
+
+    playPauseBtn.classList.add('playing');
+    progressBar.style.width = '0%';
+}
+
+prevbtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + songs.length) % songs.length;
+    loadTrack();
+});
+
+nextbtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % songs.length;
+    loadTrack();
+});
+
+const today = new Date();
+let currentMonth = today.getMonth(); // 0 = January, 11 = December
+let currentYear = today.getFullYear();
+
+const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
+// getDay() returns 0-6 (Sun-Sat) — tells us how many empty cells to leave before day 1
+
+const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+// a neat trick: "day 0" of next month = last day of current month
