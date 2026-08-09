@@ -659,3 +659,44 @@ const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
 
 const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 // a neat trick: "day 0" of next month = last day of current month
+
+const grid = document.querySelector('.calendar-grid');
+
+
+function renderCalendar() {
+    const grid = document.querySelector('.calendar-grid');
+    grid.innerHTML = ''; // clear old days before rebuilding
+
+    const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
+    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+    // your existing two loops go here (empty cells, then day cells)
+    for (let i = 0; i < firstDayOfMonth; i++) {
+    const emptyCell = document.createElement('div');
+        grid.appendChild(emptyCell);
+    }
+    for (let day = 1; day <= daysInMonth; day++) {
+        const dayCell = document.createElement('div');
+        dayCell.textContent = day;
+        if(day===today.getDate() && currentMonth===today.getMonth() &&currentYear===today.getFullYear()){
+            dayCell.classList.add('today');
+        }
+        grid.appendChild(dayCell);
+    }
+
+}
+
+renderCalendar(); // call it once, so the calendar shows on page load
+
+const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+const monthSelect=document.querySelector('#month-select');
+
+for(let i=0;i<monthName.length;i++){
+    const option=document.createElement('option');
+
+    option.value=i;
+    option.textContent=monthName[i];
+    monthSelect.appendChild(option);
+
+}

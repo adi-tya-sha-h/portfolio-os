@@ -793,19 +793,23 @@ footer{
     right:10px;
 }
 
+#calendar{
+    width:50%;
+}
 .calendar-weekdays {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     /* text-align, color, font-size — your call */
     text-align:center;
-    color:#E6727B;
+    /* color:#E6727B; */
+    color:#f3350c;
     font-size:10px;
     
 }
 .calendar-weekdays p{
     margin:0;
     padding:0;
-    border:1px solid white;
+    /* border:1px solid white; */
     border-radius:2px;
 }
 
@@ -814,4 +818,54 @@ footer{
     grid-template-columns: repeat(7, 1fr);
     /* gap between cells? */
     gap:2px;
+}
+.calendar-grid div {
+    /* border: 1px solid red; */
+    min-height: 20px; /* temporary, so you can actually see them */
+}
+.calendar-grid div {
+    font-size: 10px;
+    min-height: 0;
+    height: auto;
+    padding: 1px 0;
+    text-align: center;
+}
+
+.calendar-grid {
+    gap: 1px;
+}
+
+.calendar-weekdays p {
+    font-size: 10px;
+    padding: 1x 0;
+    margin: 0;
+}
+
+.calendar-weekdays {
+    gap: 1px;
+    margin-top:4px;
+}
+
+.calendar-header{
+    display:flex;
+    justify-content:space-between;
+    padding-left:10px;
+    padding-right:10px;
+}
+
+/* .today{
+    border-radius:50%;
+    background-color:red;
+} */
+.calendar-grid .today {
+    background: #f3350c;
+    color:white;
+    border-radius: 50%;
+    width: 15px;
+    height: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self:center;
+    align-self:center;
 }
