@@ -367,6 +367,16 @@ function updateClock() {
 updateClock();
 setInterval(updateClock, 1000);
 
+appNames={
+    appstore:'App Store',
+    netflix:'Netflix',
+    spotify:'Spotify',
+    notes:'Notes',
+    setting:'Setting',
+    mail:'Mail',
+    terminal:'Terminal',
+    trash:'Trash'
+}
 // ---- Focus / z-index logic (unchanged from Step 1) ----
   let highestZ = 10;
  
@@ -375,6 +385,10 @@ setInterval(updateClock, 1000);
     win.classList.add('active');
     highestZ += 1;
     win.style.zIndex = highestZ;
+
+    const appId = win.dataset.app;
+    const nameDisplay = document.querySelector('#active-app-name');
+    nameDisplay.textContent = appNames[appId] || "Finder";
   }
  
   // ---- Drag logic (unchanged from Step 1) ----
@@ -428,6 +442,7 @@ setInterval(updateClock, 1000);
   const closeBtn = win.querySelector('.dot.red');
   closeBtn.addEventListener('click', () => {
     win.remove();
+    document.querySelector('#active-app-name').textContent = "Finder";
   });
 
   const minimizeBtn = win.querySelector('.dot.yellow');
@@ -499,21 +514,25 @@ dockButtons.forEach(button => {
 
 const dock = document.querySelector('.dock');
 const icons = document.querySelectorAll('.apps button');
-const maxDistance = 100;
+const maxDistance = 150;
 
 dock.addEventListener('mousemove', (e) => {
   icons.forEach(icon => {
     const rect = icon.getBoundingClientRect();
     let iconCenterX = rect.left + rect.width / 2
     let distance=Math.abs(e.clientX - iconCenterX);
-    let scale = 1 + 0.5 * Math.max(0, 1 - distance / maxDistance);
+    let scale = 1 + 0.6 * Math.max(0, 1 - distance / maxDistance);
+    let extraMargin = (scale - 1) * 20;
+
     icon.style.transform=`scale(${scale})`;
+    icon.style.margin = `3px ${extraMargin + 3}px`;
   });
 });
 
 dock.addEventListener("mouseleave",()=>{
   icons.forEach(icon=>{
     icon.style.transform='scale(1)';
+    icon.style.margin='3px 0px';
   })
 })
 
@@ -683,20 +702,34 @@ function renderCalendar() {
         }
         grid.appendChild(dayCell);
     }
-
 }
 
 renderCalendar(); // call it once, so the calendar shows on page load
 
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-const monthSelect=document.querySelector('#month-select');
+function populateDropdown(dropdownId, items, onSelect) {
+    const dropdown = document.querySelector(`#${dropdownId}`);
+    const selectedDisplay = dropdown.querySelector('.dropdown-selected');
+    const optionsList = dropdown.querySelector('.dropdown-options');
 
-for(let i=0;i<monthName.length;i++){
-    const option=document.createElement('option');
+    items.forEach((item, index) => {
+        const optionEl = document.createElement('div');
+        optionEl.textContent = item;
+        optionEl.addEventListener('click', () => {
+            selectedDisplay.textContent = item;
+            optionsList.classList.remove('open');
+            onSelect(index);
+        });
+        optionsList.appendChild(optionEl);
+    });
 
-    option.value=i;
-    option.textContent=monthName[i];
-    monthSelect.appendChild(option);
-
+    selectedDisplay.addEventListener('click', () => {
+        optionsList.classList.toggle('open');
+    });
 }
+
+populateDropdown('month-dropdown',monthNames,(selectedIndex)=>{
+    currentMonth=selectedIndex;
+    renderCalendar();
+})
