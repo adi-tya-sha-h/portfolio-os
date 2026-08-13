@@ -1,10 +1,12 @@
 const apps = [
   { id: 'finder',   title: 'Finder',   html:`
     <div class="finder">
-          <h2>👋 Hi, I'm Aditya</h2>
-          <p>Here are my socials.</p>
-          <button>GitHub</button>
-          <button>LinkedIn</button>
+          <div class="finder-nav">
+            <p>Favourites</p>
+            <button class="finder-btn" id="projects"><svg width="14" height="12" viewBox="0 0 52 44" aria-hidden="true" class="shrink-0"><path d="M3 8 a4 4 0 0 1 4-4 h12 l4 5 h22 a4 4 0 0 1 4 4 v23 a4 4 0 0 1-4 4 H7 a4 4 0 0 1-4-4 Z" fill="#2e9be4"></path></svg> Projects</button>
+          </div>
+          <div class="finder-content">
+          <p id="project-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 4 L7 12 L15 20" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Projects</p></div>
     </div>`,
     top: 60, left: 340 
   },
@@ -733,3 +735,33 @@ populateDropdown('month-dropdown',monthNames,(selectedIndex)=>{
     currentMonth=selectedIndex;
     renderCalendar();
 })
+
+const projects = [
+  { title: 'portfolio', subtitle: 'mac-portfolio', projectimg: '/assets/project1.png' },
+  { title: 'amazon', subtitle: 'homepage', projectimg: '/assets/project2.png' },
+  { title: 'notesAi', subtitle: 'quiz&notes', projectimg: '/assets/project3.png' },
+  { title: 'monitoring-system', subtitle: 'restaurant-management', projectimg: '/assets/project4.png' }
+];
+
+const cardsHTML = projects.map(project => `
+  <div class="finder-card">
+    <img class="finder-card-img" src="${project.projectimg}" alt="${project.title}">
+    <div class="finder-card-title">${project.title}</div>
+    <div class="finder-card-subtitle">${project.subtitle}</div>
+  </div>
+`).join('');
+
+function openFinder() {
+  const html = `
+    <div class="finder">
+      <div class="finder-nav">
+        <p>Favourite</p>
+        <button class="finder-btn" id="projects">Projects</button>
+      </div>
+      <div class="finder-content">
+        ${cardsHTML}
+      </div>
+    </div>
+  `;
+  createWindow({ id: 'finder', title: 'Finder', html, top: 100, left: 100 });
+}
