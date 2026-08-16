@@ -1,12 +1,19 @@
 const apps = [
   { id: 'finder',   title: 'Finder',   html:`
     <div class="finder">
-          <div class="finder-nav">
-            <p>Favourites</p>
-            <button class="finder-btn" id="projects"><svg width="14" height="12" viewBox="0 0 52 44" aria-hidden="true" class="shrink-0"><path d="M3 8 a4 4 0 0 1 4-4 h12 l4 5 h22 a4 4 0 0 1 4 4 v23 a4 4 0 0 1-4 4 H7 a4 4 0 0 1-4-4 Z" fill="#2e9be4"></path></svg> Projects</button>
-          </div>
-          <div class="finder-content">
-          <p id="project-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 4 L7 12 L15 20" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Projects</p></div>
+        <div class="finder-nav">
+            <p>Favorites</p>
+            <button class="finder-nav-items finder-btn" id="projects-id"><svg width="14" height="12" viewBox="0 0 52 44" aria-hidden="true" class="shrink-0"><path d="M3 8 a4 4 0 0 1 4-4 h12 l4 5 h22 a4 4 0 0 1 4 4 v23 a4 4 0 0 1-4 4 H7 a4 4 0 0 1-4-4 Z" fill="#2e9be4"></path></svg> Projects</button>
+            <p>Work</p>
+            <div class="finder-works"></div>
+        </div>
+        <div class="finder-content">
+            <div class="finder-header">
+                <span class="back-arrow" id="finder-back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 4 L7 12 L15 20" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+                <span class="finder-title" id="finder-title">Projects</span>
+            </div>
+            <div class="finder-body"></div>
+        </div>
     </div>`,
     top: 60, left: 340 
   },
@@ -16,7 +23,7 @@ const apps = [
     top: 60, left: 345 
   },
   { id: 'spotify', title: 'Spotify', html:`
-    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/72FEk3sDYTJatVC9ZYboBZ?utm_source=generator&theme=0&si=cfab8f30aa0a4ac4" width="100%" height="100%" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>` ,
+    <iframe data-testid="embed-iframe" style="border-radius:0px" src="https://open.spotify.com/embed/playlist/72FEk3sDYTJatVC9ZYboBZ?utm_source=generator&theme=0&si=cfab8f30aa0a4ac4" width="100%" height="100%" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>` ,
      top: 65, left: 340 
     },
   { id: 'netflix',   title: 'Netflix',   html: `
@@ -511,6 +518,11 @@ dockButtons.forEach(button => {
     const id=button.id;
     const config = apps.find(app => app.id === id);
     toggleWindow(id,config);
+
+    if (id === 'finder') {
+        renderProjects();
+        workList();
+    }
   });
 });
 
@@ -589,16 +601,6 @@ document.addEventListener('click', (e) => {
 const playPauseBtn=document.querySelector(".play-pause-btn");
 const progressBar=document.querySelector(".progress-bar");
 
-// playPauseBtn.addEventListener("click",()=>{
-//     playPauseBtn.classList.toggle("playing");
-
-//     if (playPauseBtn.classList.contains('playing')) {
-//         timer = setInterval(updateProgress, 1000);
-//     } else {
-//         clearInterval(timer);
-//     }
-// });
-
 if (playPauseBtn) {
     playPauseBtn.addEventListener('click', () => {
         if (!window.spotifyController) return;
@@ -616,7 +618,7 @@ window.onSpotifyIframeApiReady = (IFrameAPI) => {
     const element = document.getElementById('spotify-embed');
     if (!element) return;
     const options = {
-        uri: 'spotify:track:5zICn0hbsUvZBpHeffRQcj'
+        uri: 'spotify:track:26qigRagi9CRNhbGYajKOS'
     };
     IFrameAPI.createController(element, options, (EmbedController) => {
         window.spotifyController = EmbedController;
@@ -634,8 +636,8 @@ window.onSpotifyIframeApiReady = (IFrameAPI) => {
 };
 
 const songs=[
-    {title:'Sirf Tujhse' ,artist:'Saksham Sehgal',albumArt:"assets/sirftujhse.png",uri:"spotify:track:5zICn0hbsUvZBpHeffRQcj"},
     {title:'Petels On The Moon',artist:'Wasia Project',albumArt:"assets/song1.jpg",uri:"spotify:track:26qigRagi9CRNhbGYajKOS"},
+    {title:'Sirf Tujhse' ,artist:'Saksham Sehgal',albumArt:"assets/sirftujhse.png",uri:"spotify:track:5zICn0hbsUvZBpHeffRQcj"},
     {title:'Seasons',artist:'Wave To Earth',albumArt:"assets/song2.jpg",uri:"spotify:track:0aVd7QiY8BstysHb62c5Fi"},
     {title:'REDRED',artist:'CORTIS',albumArt:"assets/song3.jpg",uri:"spotify:track:2fCwv2ppU5nTRTckomIGsd"}
 ];
@@ -671,6 +673,7 @@ nextbtn.addEventListener('click', () => {
     loadTrack();
 });
 
+// calendar
 const today = new Date();
 let currentMonth = today.getMonth(); // 0 = January, 11 = December
 let currentYear = today.getFullYear();
@@ -701,6 +704,7 @@ function renderCalendar() {
         dayCell.textContent = day;
         if(day===today.getDate() && currentMonth===today.getMonth() &&currentYear===today.getFullYear()){
             dayCell.classList.add('today');
+            
         }
         grid.appendChild(dayCell);
     }
@@ -710,6 +714,7 @@ renderCalendar(); // call it once, so the calendar shows on page load
 
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
+document.querySelector('.dropdown-selected').textContent = monthNames[currentMonth];
 function populateDropdown(dropdownId, items, onSelect) {
     const dropdown = document.querySelector(`#${dropdownId}`);
     const selectedDisplay = dropdown.querySelector('.dropdown-selected');
@@ -737,31 +742,148 @@ populateDropdown('month-dropdown',monthNames,(selectedIndex)=>{
 })
 
 const projects = [
-  { title: 'portfolio', subtitle: 'mac-portfolio', projectimg: '/assets/project1.png' },
-  { title: 'amazon', subtitle: 'homepage', projectimg: '/assets/project2.png' },
-  { title: 'notesAi', subtitle: 'quiz&notes', projectimg: '/assets/project3.png' },
-  { title: 'monitoring-system', subtitle: 'restaurant-management', projectimg: '/assets/project4.png' }
+    { 
+        title: 'Portfolio', 
+        subtitle: 'mac-portfolio', 
+        projectimg: '/assets/reze1.jpg',
+        description: 'A macOS-inspired interactive desktop portfolio built with vanilla HTML, CSS, and JavaScript — draggable windows, a functional dock, and custom app experiences like this one.'
+    },
+    { 
+        title: 'Amazon', 
+        subtitle: 'homepage', 
+        projectimg: '/assets/amazon-clone.mp4',
+        description: 'A pixel-accurate clone of the Amazon homepage, focused on responsive layout and recreating real-world e-commerce UI patterns.'
+    },
+    { 
+        title: 'NotesAi', 
+        subtitle: 'quiz and notes', 
+        projectimg: '/assets/notesAi.mp4',
+        description: 'An AI-powered study tool that turns lecture notes and study material into structured summaries and interactive quizzes.'
+    },
+    { 
+        title: 'Monitoring-System', 
+        subtitle: 'restaurant-management', 
+        projectimg: '/assets/reze.jpg',
+        description: 'A restaurant monitoring and management system for tracking orders, staff, and operations in real time.'
+    }
 ];
 
-const cardsHTML = projects.map(project => `
-  <div class="finder-card">
-    <img class="finder-card-img" src="${project.projectimg}" alt="${project.title}">
-    <div class="finder-card-title">${project.title}</div>
-    <div class="finder-card-subtitle">${project.subtitle}</div>
-  </div>
-`).join('');
+document.body.addEventListener('mouseover', (e) => {
+  const card = e.target.closest('.finder-card');
+  if (!card) return;
+  const video = card.querySelector('video');
+  if (video) video.play();
+});
 
-function openFinder() {
-  const html = `
-    <div class="finder">
-      <div class="finder-nav">
-        <p>Favourite</p>
-        <button class="finder-btn" id="projects">Projects</button>
+document.body.addEventListener('mouseout', (e) => {
+  const card = e.target.closest('.finder-card');
+  if (!card) return;
+  const video = card.querySelector('video');
+  if (video) {
+    video.pause();
+    video.currentTime = 0;
+  }
+});
+
+function renderProjects() {
+    const container = document.querySelector('.finder-body');
+    if (!container) return;
+
+    container.classList.remove('detail-view');
+    container.innerHTML = projects.map((project,index) => {
+    
+    const isVideo = project.projectimg.endsWith('.mp4');
+
+    const media = isVideo
+      ? `<video class="finder-card-img" src="${project.projectimg}" muted loop playsinline></video>`
+      : `<img class="finder-card-img" src="${project.projectimg}" alt="${project.title}">`;
+
+    return `
+      <div class="finder-card" data-index="${index}">
+        
+        <div class="finder-card-media">
+          ${media}
+        </div>
+        <div class="finder-card-title">${project.title}</div>
+        <div class="finder-card-subtitle">${project.subtitle}</div>
       </div>
-      <div class="finder-content">
-        ${cardsHTML}
-      </div>
-    </div>
-  `;
-  createWindow({ id: 'finder', title: 'Finder', html, top: 100, left: 100 });
+    `;
+  }).join('');
 }
+
+function renderProjectDetail(project){
+    const container=document.querySelector('.finder-body');
+    if(!container) return;
+
+    container.classList.add('detail-view');
+
+    const isVideo = project.projectimg.endsWith('.mp4');
+
+    const media = isVideo
+      ? `<video class="finder-detail-img" src="${project.projectimg}" controls controlsList="nodownload noremoteplayback" disablePictureInPicture playsinline></video>`
+      : `<img class="finder-detail-img" src="${project.projectimg}" alt="${project.title}">`;
+
+    container.innerHTML=`
+        <div class="finder-detail-media">
+        ${media}
+        </div>
+        <div class="finder-detail-title">${project.title}</div>
+        <div class="finder-detail-subtitle">${project.subtitle}</div>
+        <div class="finder-detail-description">${project.description}</div>
+    `;
+    const title=document.getElementById('finder-title');
+    title.innerText=project.title;
+}
+
+document.body.addEventListener('click',(e)=>{
+    const card= e.target.closest('.finder-card');
+    if(!card) return;
+
+    const index=Number(card.dataset.index);
+    const project=projects[index];
+
+    renderProjectDetail(project);
+});
+
+document.body.addEventListener('click', (e) => {
+    const backBtn = e.target.closest('#finder-back');
+    if (!backBtn) return;
+    const title= document.getElementById('finder-title');
+    if(title.innerText==='Projects') return;
+    
+    renderProjects();
+    title.innerText='Projects';
+});
+
+function workList() {
+    const container = document.querySelector('.finder-works');
+    if (!container) return;
+
+    container.innerHTML = projects.map((project,index) => {
+    
+    return `
+    <button class="finder-nav-items" data-index="${index}">
+        <svg width="11" height="13" viewBox="0 0 40 48" aria-hidden="true" class="shrink-0"><path d="M4 4 a3 3 0 0 1 3-3 h20 l9 9 v34 a3 3 0 0 1-3 3 H7 a3 3 0 0 1-3-3 Z" fill="#9b9ba4"></path></svg>
+        <span class="finder-nav-title">${project.title}</span>
+    </button>`
+    
+  }).join('');
+}
+
+
+document.body.addEventListener('click',(e)=>{
+    const navItem= e.target.closest('.finder-nav-items');
+    if(!navItem) return;
+
+    if(navItem.id==='projects-id'){
+        renderProjects();
+    }else{
+        const index=Number(navItem.dataset.index);
+        const project=projects[index];
+        renderProjectDetail(project);
+    }
+
+    const allNavItems=document.querySelectorAll('.finder-nav-items');
+    allNavItems.forEach(item => item.classList.remove('active'));
+    navItem.classList.add('active');
+});
