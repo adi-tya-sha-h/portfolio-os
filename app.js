@@ -17,9 +17,19 @@ const apps = [
     </div>`,
     top: 60, left: 340 
   },
-  { id: 'appstore',   title: 'App Store',   html:`<div class="app-store">
-    <h1>here are some applications that i use</h1>
-  </div>`, 
+  { id: 'appstore',   title: 'App Store',   html:`
+    <div class="app-store">
+        <div class="app-store-nav">
+            <input class="search-bar" placeholder="Search">
+            <button class="app-store-nav-btn" data-category="tech">Tech</button>
+            <button class="app-store-nav-btn" data-category="social">Social</button>
+            <button class="app-store-nav-btn" data-category="games">Games</button>
+        </div>
+        <div class="app-store-content">
+            
+            <div class="app-store-body"></div>
+        </div>
+    </div>`, 
     top: 60, left: 345 
   },
   { id: 'spotify', title: 'Spotify', html:`
@@ -35,8 +45,9 @@ const apps = [
                 </div>
                 <button class="nav-button">Home</button>
                 <button class="nav-button">Shows</button>
+                <button class="nav-button">Anime</button>
                 <button class="nav-button">Moives</button>
-                <button class="nav-button">My List</button>
+                <button class="nav-button">Drama</button>
             </nav>
             <main>
               <div class="hero">
@@ -49,10 +60,10 @@ const apps = [
                           <span class="hero-dot"></span>
                           <span>2026</span>
                           <span class="hero-dot"></span>
-                          <span>1 Episodes</span>
+                          <span>1 Episode</span>
                       </div>
                       <p class="hero-description">
-                          When a lost book reappears, a young inventor joins forces with a sake brewer's daughter to bring its electric ideas to life.
+                          After meeting the mysterious Reze, Denji finds himself caught between romance and danger. As their relationship grows closer, a deadly new threat emerges, forcing Denji to face a battle that could change everything.
                       </p>
                       <div class="hero-buttons">
                           <button class="btn-play">▶ Play</button>
@@ -523,6 +534,9 @@ dockButtons.forEach(button => {
         renderProjects();
         workList();
     }
+    if(id==='appstore'){
+        renderAppList('tech');
+    }
   });
 });
 
@@ -745,19 +759,19 @@ const projects = [
     { 
         title: 'Portfolio', 
         subtitle: 'mac-portfolio', 
-        projectimg: '/assets/reze1.jpg',
+        projectimg: '/assets/projects/portfolio.mp4',
         description: 'A macOS-inspired interactive desktop portfolio built with vanilla HTML, CSS, and JavaScript — draggable windows, a functional dock, and custom app experiences like this one.'
     },
     { 
         title: 'Amazon', 
         subtitle: 'homepage', 
-        projectimg: '/assets/amazon-clone.mp4',
+        projectimg: '/assets/projects/amazon-clone.mp4',
         description: 'A pixel-accurate clone of the Amazon homepage, focused on responsive layout and recreating real-world e-commerce UI patterns.'
     },
     { 
         title: 'NotesAi', 
         subtitle: 'quiz and notes', 
-        projectimg: '/assets/notesAi.mp4',
+        projectimg: '/assets/projects/notesAi.mp4',
         description: 'An AI-powered study tool that turns lecture notes and study material into structured summaries and interactive quizzes.'
     },
     { 
@@ -886,4 +900,118 @@ document.body.addEventListener('click',(e)=>{
     const allNavItems=document.querySelectorAll('.finder-nav-items');
     allNavItems.forEach(item => item.classList.remove('active'));
     navItem.classList.add('active');
+});
+
+const appStoreItems = {
+  social: [
+    { name: 'Instagram', tagline: 'Follow me on insta (;', icon: '/assets/apps/insta-icon.png', url: 'https://instagram.com/_adi.ityashah_' },
+    { name: 'LinkedIn', tagline: 'You can Connect to me on linkedin', icon: '/assets/apps/linkedin-icon.png', url: 'https://www.linkedin.com/in/aditya-shah-357579327/' },
+    { name: 'GitHub', tagline: 'Here is My github profile', icon:'/assets/apps/github-icon.png',url:'https://github.com/adi-tya-sha-h'},
+    { name: 'Telegram', tagline: 'hit me up on telegram ', icon:'/assets/apps/telegram-icon.png', url:'https://t.me/Xishah'},
+  ],
+  tech: [
+    { name: 'Claude', icon: '/assets/apps/claude-icon.png'},
+    { name: 'ChatGPT', icon: '/assets/apps/chatgpt-icon.png'},
+    { name: 'VScode', icon: '/assets/apps/vscode-icon.png'},
+    { name: 'Antigravity', icon: '/assets/apps/antigravity-icon.png'},
+    { name: 'Grok', icon: '/assets/apps/grok-icon.png'},
+  ],
+  games: [
+    { name: 'Genshin Impact',tagline:'Explore the unexplored', icon: '/assets/apps/genshinimpact-icon.png', media: '/assets/genshin.png' ,type:'image'},
+    { name: 'Wuthering Waves - To Xuanfang',tagline:'Waking of a World', icon: '/assets/apps/wuwa-icon.png', media: 'op22gIZneCk', type: 'youtube' },
+  ]
+};
+
+function capitalize(str){
+    return str[0].toUpperCase() + str.slice(1);
+}
+
+function renderAppList(category) {
+  const container = document.querySelector('.app-store-body');
+  if (!container) return;
+
+  const items = appStoreItems[category];
+  const heading=capitalize(category);
+
+  const rows = items.map(item => {
+    const link = item.url
+      ? `<a class="app-link" href="${item.url}" target="_blank">SEE</a>`
+      : '';
+    const tag = item.tagline
+      ? `<div class="app-tagline">${item.tagline}</div>`
+      : '';
+    
+    return `
+      <div class="app-row">
+        <div class="app-content">
+          <img src="${item.icon}" class="app-icon">
+          <div class="app-details">
+            <div class="app-name">${item.name}</div>
+            ${tag}
+          </div>
+          ${link}
+        </div>
+      </div>
+    `;
+  }).join('');
+  container.innerHTML = `
+    <h1 class="app-store-header"s> ${heading} Apps</h1>
+    <p class="app-store-heading">Here are the ${category} apps that I use</p>
+    ${rows}
+  `;
+}
+
+function renderGames() {
+  const container = document.querySelector('.app-store-body');
+  if (!container) return;
+
+  const rows = appStoreItems.games.map(game => {
+    const isVideo = game.media.endsWith('.mp4');
+    let media; // ← NEW: declared outside the if/else so all branches can assign to it
+
+    if (game.type === 'youtube') {
+      // ← NEW: youtube branch
+      media = `<iframe class="game-media" width="100%" height="300" 
+        src="https://www.youtube.com/embed/${game.media}?autoplay=1&mute=0&loop=1&playlist=${game.media}&controls=1&modestbranding=1&rel=0&fs=0&disablekb=1"
+        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+    } else if (game.type === 'video') {
+      // ← unchanged, just renamed from isVideo check
+      media = `<video class="game-media" src="${game.media}" controls controlsList="nodownload noremoteplayback" disablePictureInPicture playsinline></video>`;
+    } else {
+      // ← unchanged, default to image
+      media = `<img class="game-media" src="${game.media}">`;
+    }
+    
+    return `
+    <div class="games">
+            <div class="game-content">
+                <img src="${game.icon}" class="game-icon-img">
+                <div class="game-title">
+                    <div class="game-name">${game.name}</div>
+                    <div class="game-tag">${game.tagline}</div>
+                </div>
+            </div>
+            ${media}
+        </div>
+    `;
+  }).join('');
+
+  container.innerHTML=`
+  <h1 class="game-header"> Games</h1>
+    <p class="game-headline">Here are the games that I am active in</p>
+    ${rows}
+  `;
+}
+document.body.addEventListener('click', (e) => {
+  const navBtn = e.target.closest('.app-store-nav-btn');
+  if (!navBtn) return;
+
+  const category = navBtn.dataset.category;
+
+  // what goes here? think about the if/else branching
+  if(category==='tech' || category==='social'){
+    renderAppList(category);
+  }else if(category==='games'){
+    renderGames();
+  }
 });
