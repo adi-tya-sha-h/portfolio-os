@@ -20,7 +20,7 @@ const apps = [
   { id: 'appstore',   title: 'App Store',   html:`
     <div class="app-store">
         <div class="app-store-nav">
-            <input class="search-bar" placeholder="Search">
+            <input class="search-bar" placeholder="hehehe">
             <button class="app-store-nav-btn" data-category="tech">Tech</button>
             <button class="app-store-nav-btn" data-category="social">Social</button>
             <button class="app-store-nav-btn" data-category="games">Games</button>
@@ -31,6 +31,12 @@ const apps = [
         </div>
     </div>`, 
     top: 60, left: 345 
+  },
+  {
+    id:'safari',title:'Safari', html:`
+    
+    `,
+    top:63,left:343
   },
   { id: 'spotify', title: 'Spotify', html:`
     <iframe data-testid="embed-iframe" style="border-radius:0px" src="https://open.spotify.com/embed/playlist/72FEk3sDYTJatVC9ZYboBZ?utm_source=generator&theme=0&si=cfab8f30aa0a4ac4" width="100%" height="100%" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>` ,
@@ -312,8 +318,24 @@ const apps = [
             </p>
         </div>`
     , top: 60, left: 345 },
-  { id: 'setting', title: 'Settings', html: `<div><h2>settings (; </h2></div>`, top: 80, left: 265 },
-  { id: 'mail', title: 'Mail', html: `<div><h2>if you wanna contact me just dm me on linkedin or mail me at adityashah0989@gmail.com  </h2></div>`, top: 85, left: 260 },
+  { id: 'setting', title: 'Settings', html: `
+    <div class="setting">
+        <div class="setting-nav">
+            <input class="search-bar" id="setting-search-bar" placeholder="hehehe">
+            <div class="setting-nav-content">
+                    <button class="setting-nav-btn" data-category="Wifi"><span class="setting-svg" aria-hidden="true" style="background-color: rgb(10, 132, 255);"><svg width="12" height="12" viewBox="0 0 24 24"><path d="M3 10 C8 5.5 16 5.5 21 10 M6.5 13.5 C10 10.5 14 10.5 17.5 13.5 M9.5 17 C11 15.7 13 15.7 14.5 17" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></path><circle cx="12" cy="19.5" r="1.3" fill="currentColor" stroke="none"></circle></svg></span>Wifi</button>
+                    <button class="setting-nav-btn" data-category="Sound"><span class="setting-svg" aria-hidden="true" style="background-color: rgb(255, 45, 85);"><svg width="12" height="12" viewBox="0 0 24 24"><path d="M5 9 H8.5 L13 5 V19 L8.5 15 H5 Z" fill="currentColor" stroke="none"></path><path d="M16 9.5 C17.2 10.8 17.2 13.2 16 14.5 M18.5 7.5 C20.5 9.7 20.5 14.3 18.5 16.5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></path></svg></span>Sound</button>
+                    <button class="setting-nav-btn" data-category="Appearance"><span class="setting-svg" aria-hidden="true" style="background-color: rgb(29, 29, 34);"><svg width="12" height="12" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></circle><path d="M12 4 A8 8 0 0 1 12 20 Z" fill="currentColor" stroke="none"></path></svg></span>Appearance</button>
+                    <button class="setting-nav-btn" data-category="Battery"><span class="setting-svg" aria-hidden="true" style="background-color: rgb(52, 199, 89);"><svg width="13" height="12" viewBox="0 0 28 14"><rect x="1.5" y="2" width="20" height="10" rx="2.5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></rect><rect x="4" y="4.5" width="12" height="5" rx="1" fill="currentColor" stroke="none"></rect><path d="M24 5.5 C25 6 25 8 24 8.5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></path></svg></span>Battery</button>
+                    <button class="setting-nav-btn" data-category="General"><span class="setting-svg" aria-hidden="true" style="background-color: rgb(142, 142, 147);"><svg width="12" height="12" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></circle><path d="M12 3.5 V6 M12 18 V20.5 M3.5 12 H6 M18 12 H20.5 M6 6 L7.8 7.8 M16.2 16.2 L18 18 M18 6 L16.2 7.8 M7.8 16.2 L6 18" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></path></svg></span>General</button>
+                    <button class="setting-nav-btn" data-category="Display"><span class="setting-svg" aria-hidden="true" style="background-color: rgb(10, 132, 255);"><svg width="12" height="12" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></rect><path d="M9 20 H15" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></path></svg></span>Display</button>
+                    <button class="setting-nav-btn" data-category="User"><span class="setting-svg" aria-hidden="true" style="background-color: rgb(142, 142, 147);"><svg width="12" height="12" viewBox="0 0 24 24"><circle cx="12" cy="9" r="3.5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></circle><path d="M5 20 C6 15.8 9 14.5 12 14.5 C15 14.5 18 15.8 19 20" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></path></svg></span>User</button>
+            </div>
+        </div>
+        <div class="setting-content">
+            <div class="setting-body"></div>
+        </div>
+    </div>`, top: 80, left: 265 },
   { id: 'terminal', title: 'Terminal', html: `<div class="terminal"><pre>Hey!</pre>
         <pre class="para">Welcome to ADI's Terminal. Write "cmd" to know the commands</pre>
         <pre class="initcmd">visitor@adi's-os ~ %  </pre></div>`, top: 80, left: 260 },
@@ -389,11 +411,11 @@ setInterval(updateClock, 1000);
 
 appNames={
     appstore:'App Store',
+    safari:'Safari',
     netflix:'Netflix',
     spotify:'Spotify',
     notes:'Notes',
     setting:'Setting',
-    mail:'Mail',
     terminal:'Terminal',
     trash:'Trash'
 }
@@ -907,19 +929,37 @@ const appStoreItems = {
     { name: 'Instagram', tagline: 'Follow me on insta (;', icon: '/assets/apps/insta-icon.png', url: 'https://instagram.com/_adi.ityashah_' },
     { name: 'LinkedIn', tagline: 'You can Connect to me on linkedin', icon: '/assets/apps/linkedin-icon.png', url: 'https://www.linkedin.com/in/aditya-shah-357579327/' },
     { name: 'GitHub', tagline: 'Here is My github profile', icon:'/assets/apps/github-icon.png',url:'https://github.com/adi-tya-sha-h'},
-    { name: 'Telegram', tagline: 'hit me up on telegram ', icon:'/assets/apps/telegram-icon.png', url:'https://t.me/Xishah'},
+    { name: 'Telegram', tagline: 'hit me up on telegram ', icon:'/assets/apps/telegram-icon.png', url:'https://t.me/Xishah'}
   ],
   tech: [
     { name: 'Claude', icon: '/assets/apps/claude-icon.png'},
     { name: 'ChatGPT', icon: '/assets/apps/chatgpt-icon.png'},
     { name: 'VScode', icon: '/assets/apps/vscode-icon.png'},
     { name: 'Antigravity', icon: '/assets/apps/antigravity-icon.png'},
-    { name: 'Grok', icon: '/assets/apps/grok-icon.png'},
+    { name: 'Grok', icon: '/assets/apps/grok-icon.png'}
   ],
   games: [
-    { name: 'Genshin Impact',tagline:'Explore the unexplored', icon: '/assets/apps/genshinimpact-icon.png', media: '/assets/genshin.png' ,type:'image'},
-    { name: 'Wuthering Waves - To Xuanfang',tagline:'Waking of a World', icon: '/assets/apps/wuwa-icon.png', media: 'op22gIZneCk', type: 'youtube' },
-  ]
+  { 
+    name: 'Genshin Impact', 
+    tagline:'Step Into a Vast Magical World of Adventure',
+    icon: '/assets/apps/genshinimpact-icon.png',
+    media: [
+        { type: 'youtube', src: 'jvXVmvW8ZQw' },
+        { type: 'image', src: '/assets/genshin-profile.png' },
+        { type: 'youtube', src: 'tN5JACOEJFM' }
+    ]
+  },
+  { 
+    name: 'Wuthering Waves', 
+    tagline:'Waking of a World',
+    icon: '/assets/apps/wuwa-icon.png',
+    media: [
+        { type: 'youtube', src: 'op22gIZneCk' },
+        { type: 'image', src: '/assets/wuwa-profile.jpg' },
+        { type: 'youtube',src: 'mT86JXY6oEw'}
+    ]
+  }
+]
 };
 
 function capitalize(str){
@@ -966,22 +1006,21 @@ function renderGames() {
   if (!container) return;
 
   const rows = appStoreItems.games.map(game => {
-    const isVideo = game.media.endsWith('.mp4');
-    let media; // ← NEW: declared outside the if/else so all branches can assign to it
 
-    if (game.type === 'youtube') {
-      // ← NEW: youtube branch
-      media = `<iframe class="game-media" width="100%" height="300" 
-        src="https://www.youtube.com/embed/${game.media}?autoplay=1&mute=0&loop=1&playlist=${game.media}&controls=1&modestbranding=1&rel=0&fs=0&disablekb=1"
-        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
-    } else if (game.type === 'video') {
-      // ← unchanged, just renamed from isVideo check
-      media = `<video class="game-media" src="${game.media}" controls controlsList="nodownload noremoteplayback" disablePictureInPicture playsinline></video>`;
-    } else {
-      // ← unchanged, default to image
-      media = `<img class="game-media" src="${game.media}">`;
-    }
-    
+    const mediaItems=game.media.map(item=>{
+        if(item.type==='youtube'){
+            return `<iframe class="game-media" width="100%" height="100%" 
+    src="https://www.youtube.com/embed/${item.src}?autoplay=0&mute=0&loop=1&playlist=${item.src}&controls=1&modestbranding=1&rel=0&disablekb=1"
+    frameborder="0"; encrypted-media; fullscreen" allowfullscreen></iframe>`;
+        }
+        else if(item.type==='video'){
+            return `<video class="game-media" src="${item.src}" controls controlsList="nodownload noremoteplayback" disablePictureInPicture playsinline></video>`;
+        }
+        else{
+            return `<img class="game-media" src="${item.src}">`;
+        }
+    }).join('');
+
     return `
     <div class="games">
             <div class="game-content">
@@ -991,7 +1030,9 @@ function renderGames() {
                     <div class="game-tag">${game.tagline}</div>
                 </div>
             </div>
-            ${media}
+            <div class="game-media-row">
+                ${mediaItems}
+            </div>
         </div>
     `;
   }).join('');
@@ -1014,4 +1055,124 @@ document.body.addEventListener('click', (e) => {
   }else if(category==='games'){
     renderGames();
   }
+});
+
+document.body.addEventListener('click', (e) => {
+    const media = e.target.closest('.game-media');
+    const enlarged = document.querySelector('.game-media.enlarged');
+    let backdrop = document.querySelector('.media-backdrop');
+
+    if (!media) {
+        if (enlarged) {
+            enlarged.classList.remove('enlarged');
+            backdrop?.remove();
+        }
+        return;
+    }
+
+    const isImage = media.tagName === 'IMG';
+    if (isImage) {
+        const nowEnlarged = media.classList.toggle('enlarged');
+    }
+});
+
+
+document.body.addEventListener('click', (e) => {
+    const settingNavBtn = e.target.closest('.setting-nav-btn');
+    const settings=document.querySelector('.setting-content');
+    if (!settingNavBtn) return;
+
+    const category = settingNavBtn.dataset.category; 
+    // assuming you added data-category to each button, like App Store
+    switch(category){
+        case 'Wifi':
+            settings.innerHTML=`<div class="setting-body">
+            <div class="setting-heading"><h1>Wifi</h1></div>
+                <div class="setting-tab">
+                    <div class="wifi">
+                    <span>Wifi</span>
+                    <span class="switch"><svg width="9" height="11" viewBox="0 0 12 14" class="text-(--os-text-dim)" aria-hidden="true"><rect x="1" y="6" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.4" fill="none"></rect><path d="M3.5 6 V4 a2.5 2.5 0 0 1 5 0 V6" stroke="currentColor" stroke-width="1.4" fill="none"></path></svg>
+                    <button role="switch" aria-checked="true" aria-label="Wi-Fi always on" disabled="" class="switch-container"><span class="switch-ball"></span></button></span>
+                    </div>
+                    <div class="setting-line"></div>
+                    <div class="wifi-msg">
+                        <div class="wifi-con">
+                            
+                            <span class="name"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+     xmlns="http://www.w3.org/2000/svg">
+  <path d="M2.5 8.5C6.8 4.4 13.7 3.8 18.5 6.8"
+        stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M5.5 12C8.5 9.2 12.8 8.7 16.2 10.2"
+        stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M8.8 15.5C9.8 14.5 11.1 14 12.4 14"
+        stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+
+  <!-- Lock -->
+  <rect x="12.5" y="14.5" width="8" height="6.5"
+        rx="1.2" fill="white"/>
+  <path d="M14.5 14.5V12.8C14.5 11.4 15.4 10.5 16.5 10.5
+           C17.6 10.5 18.5 11.4 18.5 12.8V14.5"
+        stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+  <circle cx="16.5" cy="17.6" r="0.8" fill="#292A30"/>
+</svg> Adi</span>
+                            <span class="status">Secured</span>
+                        </div>
+                        <div class="wifi-arrow">
+                            <span>Connected</span>    
+                        </div>
+                    </div>
+                </div>
+                <div class="nearby"><span>Nearby Networks</span></div>
+                <div class="setting-tab">
+                    <div class="nearby-networks">
+                        <span class="networks"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+     xmlns="http://www.w3.org/2000/svg">
+  <path d="M2.5 8.5C7.6 3.7 16.4 3.7 21.5 8.5"
+        stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M5.5 12C9.1 8.6 14.9 8.6 18.5 12"
+        stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M8.8 15.5C10.7 13.7 13.3 13.7 15.2 15.5"
+        stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+  <circle cx="12" cy="19" r="1.4" fill="white"/>
+</svg> SpotIsHot</span>
+                        <div class="setting-line"></div>
+                        <span class="networks"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+     xmlns="http://www.w3.org/2000/svg">
+  <path d="M2.5 8.5C7.6 3.7 16.4 3.7 21.5 8.5"
+        stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M5.5 12C9.1 8.6 14.9 8.6 18.5 12"
+        stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M8.8 15.5C10.7 13.7 13.3 13.7 15.2 15.5"
+        stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+  <circle cx="12" cy="19" r="1.4" fill="white"/>
+</svg> RechargeKrwaLe</span>
+                    </div>
+                </div>
+            `;
+            break;
+        case 'Sound':
+            settings.innerHTML=`<div>sound</div>`;
+            break;
+        case 'Appearance':
+            settings.innerHTML=`<div>theme</div>`;
+            break;
+        case 'Battery':
+            settings.innerHTML=`<div>battery life</div>`;
+            break;
+        case 'General':
+            settings.innerHTML=`<div>general</div>`;
+            break;
+        case 'Display':
+            settings.innerHTML=`<div>display</div>`;
+            break;
+        case 'User':
+            settings.innerHTML=`<div>aditya</div>`;
+            break;
+        default:
+            settings.innerHTML = `<div>Not found</div>`;
+            break;
+    }
+    const allNavItems=document.querySelectorAll('.setting-nav-btn');
+    allNavItems.forEach(item => item.classList.remove('active'));
+    settingNavBtn.classList.add('active');
 });
