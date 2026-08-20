@@ -1083,7 +1083,6 @@ document.body.addEventListener('click', (e) => {
     if (!settingNavBtn) return;
 
     const category = settingNavBtn.dataset.category; 
-    // assuming you added data-category to each button, like App Store
     switch(category){
         case 'Wifi':
             settings.innerHTML=`<div class="setting-body">
@@ -1098,7 +1097,8 @@ document.body.addEventListener('click', (e) => {
                     <div class="wifi-msg">
                         <div class="wifi-con">
                             
-                            <span class="name"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            <span class="wifi-name">
+                            <div class="wifi-connected-logo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
      xmlns="http://www.w3.org/2000/svg">
   <path d="M2.5 8.5C6.8 4.4 13.7 3.8 18.5 6.8"
         stroke="white" stroke-width="1.8" stroke-linecap="round"/>
@@ -1114,15 +1114,15 @@ document.body.addEventListener('click', (e) => {
            C17.6 10.5 18.5 11.4 18.5 12.8V14.5"
         stroke="white" stroke-width="1.7" stroke-linecap="round"/>
   <circle cx="16.5" cy="17.6" r="0.8" fill="#292A30"/>
-</svg> Adi</span>
-                            <span class="status">Secured</span>
+</svg></div> <span class="wifi-status"><span class="network-name"> Adi</span><span>Secured</span></span>
+                            
                         </div>
                         <div class="wifi-arrow">
                             <span>Connected</span>    
                         </div>
                     </div>
                 </div>
-                <div class="nearby"><span>Nearby Networks</span></div>
+                <div class="nearby"><span>NEARBY NETWORKS</span></div>
                 <div class="setting-tab">
                     <div class="nearby-networks">
                         <span class="networks"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
@@ -1157,16 +1157,101 @@ document.body.addEventListener('click', (e) => {
             settings.innerHTML=`<div>theme</div>`;
             break;
         case 'Battery':
-            settings.innerHTML=`<div>battery life</div>`;
+            settings.innerHTML=`
+            <div class=setting-battery>
+                <div class="setting-heading">
+                    <h1>Battery</h1>
+                </div>
+                <div class="setting-tab">
+                    <div class="setting-tab-element">
+                        <span class="ml">Battery health</span>
+                        <span class="sl">Normal</span>
+                    </div>
+                    <div class="setting-line"></div>
+                    <div class="setting-tab-element">
+                        <span class="ml">Screen Time</span>
+                        <span class="sl">13h (Get a life Man T.T)</span>
+                    </div>
+                    <div class="setting-line"></div>
+                    <div class="setting-tab-element">
+                        <span class="ml">Low Power Mode</span>
+                        <span class="sl">Off (Always High (;)</span>
+                    </div>
+                </div>
+            </div>`;
             break;
         case 'General':
             settings.innerHTML=`<div>general</div>`;
             break;
         case 'Display':
-            settings.innerHTML=`<div>display</div>`;
+            settings.innerHTML=`
+            <div class=setting-display>
+                <div class="setting-heading">
+                    <h1>Display</h1>
+                </div>
+                <div class="setting-tab">
+                    <div class="setting-tab-element">
+                        <span class="ml">Resolution</span>
+                        <span class="sl">More than 780x735 </span>
+                    </div>
+                    <div class="setting-line"></div>
+                    <div class="setting-tab-element">
+                        <span class="ml">Frame Rate</span>
+                        <span class="sl">60 fps</span>
+                    </div>
+                    <div class="setting-line"></div>
+                    <div class="setting-tab-element">
+                        <span class="ml">Display Oreintation</span>
+                        <span class="sl">Landscape</span>
+                    </div>
+                    <div class="setting-line"></div>
+                    <div class="setting-tab-element">
+                        <span class="ml">Light House (desktop)</span>
+                        <span class="sl">Score 100/100</span>
+                    </div>
+                </div>
+            </div>
+            `;
             break;
         case 'User':
-            settings.innerHTML=`<div>aditya</div>`;
+            settings.innerHTML=`<div class=setting-display>
+                <div class="setting-heading">
+                    <h1>User</h1>
+                </div>
+                <div class="setting-tab">
+                    <div class="setting-tab-element">
+                        <span class="ml"><div class="user-profile" id="admin"><span>A</span></div> Adi</span>
+                        <span class="sl">Admin </span>
+                    </div>
+                    <div class="setting-line"></div>
+                    <div class="setting-tab-element">
+                        <span class="ml"><div class="user-profile"id="you">Y</div> You</span>
+                        <span class="sl">Visitor</span>
+                    </div>
+                    <div class="setting-line"></div>
+                    <div class="setting-tab-element">
+                        <span class="ml"><div class="user-profile"id="guest">G</div> Guest</span>
+                        <span class="sl">Allowed</span>
+                    </div>
+                </div>
+                <div class="setting-msg"><span>Thanks for visiting this site <3 </span></div>
+                <div class="setting-tab">
+                    <div class="setting-tab-element">
+                        <span class="ml">Code</span>
+                        <span class="sl">Open Source </span>
+                    </div>
+                    <div class="setting-line"></div>
+                    <div class="setting-tab-element">
+                        <span class="ml">License</span>
+                        <span class="sl">MIT</span>
+                    </div>
+                    <div class="setting-line"></div>
+                    <div class="setting-tab-element">
+                        <span class="ml">Code Link</span>
+                        <span class="sl"><a href="https://github.com/adi-tya-sha-h/portfolio-os"><svg class="setting-arrow" width="7" height="11" viewBox="0 0 7 11" class="ml-2 shrink-0 text-(--os-text-dim)" aria-hidden="true"><path d="M1 1 L6 5.5 L1 10" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></span>
+                    </div>
+                </div>
+            </div>`;
             break;
         default:
             settings.innerHTML = `<div>Not found</div>`;
