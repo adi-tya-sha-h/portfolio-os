@@ -3,7 +3,7 @@ const apps = [
     <div class="finder">
         <div class="finder-nav">
             <p>Favorites</p>
-            <button class="finder-nav-items finder-btn" id="projects-id"><svg width="14" height="12" viewBox="0 0 52 44" aria-hidden="true" class="shrink-0"><path d="M3 8 a4 4 0 0 1 4-4 h12 l4 5 h22 a4 4 0 0 1 4 4 v23 a4 4 0 0 1-4 4 H7 a4 4 0 0 1-4-4 Z" fill="#2e9be4"></path></svg> Projects</button>
+            <button class="finder-nav-items finder-btn active" id="projects-id"><svg width="14" height="12" viewBox="0 0 52 44" aria-hidden="true" class="shrink-0"><path d="M3 8 a4 4 0 0 1 4-4 h12 l4 5 h22 a4 4 0 0 1 4 4 v23 a4 4 0 0 1-4 4 H7 a4 4 0 0 1-4-4 Z" fill="#2e9be4"></path></svg> Projects</button>
             <p>Work</p>
             <div class="finder-works"></div>
         </div>
@@ -668,6 +668,7 @@ window.onSpotifyIframeApiReady = (IFrameAPI) => {
                 playPauseBtn.classList.toggle('playing', !isPaused);
             }
         });
+        // window.spotifyController.setVolume()
     });
 };
 
@@ -1122,7 +1123,7 @@ document.body.addEventListener('click', (e) => {
                         </div>
                     </div>
                 </div>
-                <div class="nearby"><span>NEARBY NETWORKS</span></div>
+                <div class="sub-heading"><span>NEARBY NETWORKS</span></div>
                 <div class="setting-tab">
                     <div class="nearby-networks">
                         <span class="networks"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
@@ -1151,10 +1152,92 @@ document.body.addEventListener('click', (e) => {
             `;
             break;
         case 'Sound':
-            settings.innerHTML=`<div>sound</div>`;
+            settings.innerHTML=`<div class="setting-sound">
+                <div class="setting-heading">
+                    <h1>Sound</h1>
+                </div>
+                <div class="setting-tab">
+                    <div class="setting-tab-element">
+                        <span class="ml">Volume</span>
+                        <input class="volume-slider" type="range" min=0 max=100 value=100 disabled="">     
+                    </div>
+                    <div class="setting-line"></div>
+                    <div class="setting-tab-element">
+                        <span class="ml"> Mute</span>
+                        <div class="setting-right">
+                            <svg width="9" height="11" viewBox="0 0 12 14" class="text-(--os-text-dim)" aria-hidden="true"><rect x="1" y="6" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.4" fill="none"></rect><path d="M3.5 6 V4 a2.5 2.5 0 0 1 5 0 V6" stroke="currentColor" stroke-width="1.4" fill="none"></path></svg>
+                            <button class="switch-container off" role="switch" aria-checked="false" aria-label="mute" disabled=""><span class="switch-ball"></span></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="setting-msg">Permission not granted by spotify iframe</div>
+            </div>`;
             break;
         case 'Appearance':
-            settings.innerHTML=`<div>theme</div>`;
+            settings.innerHTML=`
+            <div class="setting-heading"><h1 id="appearance-heading">Appearance</h1></div>
+            <div class="setting-tab">
+                <div class="theme-toggle">
+                    <span class="appearance-subtitle">Appearance</span>
+                    <div class="theme-right">
+                        <div class="light-mode">
+                            <button class="current-theme" id="theme-light">
+                                    <div class="light-tab">
+                                        <span class="theme-title" id="title-light"></span>
+                                        <span class="theme-content" id="content-light"></span>
+                                    </div>
+                                                
+                                </button>
+                            <span>Light</span>
+                                            
+                        </div>
+                        <div class="dark-mode">
+                            <button class="current-theme" id="dark-mode">
+                                <div class="dark-tab">
+                                    <span class="theme-title" id="title-dark"></span>
+                                    <span class="theme-content" id="content-dark"></span>
+                                </div>
+                            </button>
+                            <span>Dark</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="setting-line"></div>
+                <div class="brightness">
+                    <span>Brightness</span>
+                    <input class="brightness-slider" type="range" min="0" max="100" value="100">
+                </div>
+                
+            </div>
+            <div class="sub-heading">WALLPAPERS</div>
+            <div class="wallpaper-grid">
+                <div class="wallpaper-tab active" data-wallpaper="ember" data-color="radial-gradient(90rem 60rem at 110% -10%, #f3350c8c, #0000 60%), radial-gradient(70rem 50rem at -10% 40%, #7a1d0580, #0000 55%), linear-gradient(160deg, #2a0f08 0%, #120a08 100%)">
+                    <div class="wp-color" style="background:#94260E;"></div>
+                    <span class="wp-name">Ember</span>
+                </div>
+                <div class="wallpaper-tab" data-wallpaper="dynamic" data-color="radial-gradient(90rem 60rem at 110% -10%, #f3350c73, #0000 60%), radial-gradient(70rem 50rem at -10% 40%, #5626766b, #0000 55%), radial-gradient(60rem 50rem at 50% 125%, #1c387266, #0000 65%), linear-gradient(160deg, #121214 0%, #1b191f 100%)">
+                    <div class="wp-color" style="background:#762B38;"></div>
+                    <span class="wp-name">Dynamic</span>
+                </div>
+                <div class="wallpaper-tab" data-wallpaper="violet" data-color="radial-gradient(90rem 60rem at 110% -10%, #7a46b480, #0000 60%), radial-gradient(60rem 50rem at 50% 125%, #1c387266, #0000 65%), linear-gradient(160deg, #1a1424 0%, #161320 100%)">
+                    <div class="wp-color" style="background:#443270;"></div>
+                    <span class="wp-name">Violet</span>
+                </div>
+                <div class="wallpaper-tab" data-wallpaper="slate" data-color="radial-gradient(80rem 60rem at 80% 0, #787a8247, #0000 60%), linear-gradient(160deg, #2c2c33 0%, #0d0d0f 100%)">
+                    <div class="wp-color" style="background:#35363B;"></div>
+                    <span class="wp-name">Slate</span>
+                </div>
+                <div class="wallpaper-tab" data-wallpaper="dawn" data-color="radial-gradient(90rem 60rem at 110% -10%,#f3350c38,#0000 60%),radial-gradient(80rem 50rem at -10% 30%,#ffb88a73,#0000 55%),linear-gradient(160deg,#fbf4ef 0%,#f0dccf 100%)">
+                    <div class="wp-color" style="background:#F6B89E;"></div>
+                    <span class="wp-name">Dawn</span>
+                </div>
+                <div class="wallpaper-tab" data-wallpaper="midnight" data-color="radial-gradient(80rem 60rem at 100% -10%, #2850a066, #0000 60%), radial-gradient(60rem 50rem at 30% 120%, #56267666, #0000 60%), linear-gradient(160deg, #0a0c14 0%, #0c0a12 100%)">
+                    <div class="wp-color" style="background:#252A5B;"></div>
+                    <span class="wp-name">Midnight</span>
+                </div>
+            </div>
+                        `;
             break;
         case 'Battery':
             settings.innerHTML=`
@@ -1261,3 +1344,21 @@ document.body.addEventListener('click', (e) => {
     allNavItems.forEach(item => item.classList.remove('active'));
     settingNavBtn.classList.add('active');
 });
+
+document.body.addEventListener('click',(e)=>{
+    const wallpaper=e.target.closest('.wallpaper-tab');
+    if(!wallpaper) return;
+
+    const colour=wallpaper.dataset.color;
+
+    
+
+    const wallpapers=document.querySelectorAll('.wallpaper-tab');
+    wallpapers.forEach(item =>
+        item.classList.remove('active'));
+    wallpaper.classList.add('active');
+
+    const background=document.querySelector('.wallpaper');
+    background.style.background=colour;
+
+})
