@@ -323,13 +323,13 @@ const apps = [
         <div class="setting-nav">
             <input class="search-bar" id="setting-search-bar" placeholder="hehehe">
             <div class="setting-nav-content">
-                    <button class="setting-nav-btn" data-category="Wifi"><span class="setting-svg" aria-hidden="true" style="background-color: rgb(10, 132, 255);"><svg width="12" height="12" viewBox="0 0 24 24"><path d="M3 10 C8 5.5 16 5.5 21 10 M6.5 13.5 C10 10.5 14 10.5 17.5 13.5 M9.5 17 C11 15.7 13 15.7 14.5 17" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></path><circle cx="12" cy="19.5" r="1.3" fill="currentColor" stroke="none"></circle></svg></span>Wifi</button>
-                    <button class="setting-nav-btn" data-category="Sound"><span class="setting-svg" aria-hidden="true" style="background-color: rgb(255, 45, 85);"><svg width="12" height="12" viewBox="0 0 24 24"><path d="M5 9 H8.5 L13 5 V19 L8.5 15 H5 Z" fill="currentColor" stroke="none"></path><path d="M16 9.5 C17.2 10.8 17.2 13.2 16 14.5 M18.5 7.5 C20.5 9.7 20.5 14.3 18.5 16.5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></path></svg></span>Sound</button>
-                    <button class="setting-nav-btn" data-category="Appearance"><span class="setting-svg" aria-hidden="true" style="background-color: rgb(29, 29, 34);"><svg width="12" height="12" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></circle><path d="M12 4 A8 8 0 0 1 12 20 Z" fill="currentColor" stroke="none"></path></svg></span>Appearance</button>
-                    <button class="setting-nav-btn" data-category="Battery"><span class="setting-svg" aria-hidden="true" style="background-color: rgb(52, 199, 89);"><svg width="13" height="12" viewBox="0 0 28 14"><rect x="1.5" y="2" width="20" height="10" rx="2.5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></rect><rect x="4" y="4.5" width="12" height="5" rx="1" fill="currentColor" stroke="none"></rect><path d="M24 5.5 C25 6 25 8 24 8.5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></path></svg></span>Battery</button>
-                    <button class="setting-nav-btn" data-category="General"><span class="setting-svg" aria-hidden="true" style="background-color: rgb(142, 142, 147);"><svg width="12" height="12" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></circle><path d="M12 3.5 V6 M12 18 V20.5 M3.5 12 H6 M18 12 H20.5 M6 6 L7.8 7.8 M16.2 16.2 L18 18 M18 6 L16.2 7.8 M7.8 16.2 L6 18" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></path></svg></span>General</button>
-                    <button class="setting-nav-btn" data-category="Display"><span class="setting-svg" aria-hidden="true" style="background-color: rgb(10, 132, 255);"><svg width="12" height="12" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></rect><path d="M9 20 H15" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></path></svg></span>Display</button>
-                    <button class="setting-nav-btn" data-category="User"><span class="setting-svg" aria-hidden="true" style="background-color: rgb(142, 142, 147);"><svg width="12" height="12" viewBox="0 0 24 24"><circle cx="12" cy="9" r="3.5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></circle><path d="M5 20 C6 15.8 9 14.5 12 14.5 C15 14.5 18 15.8 19 20" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></path></svg></span>User</button>
+                    <button class="setting-nav-btn active" data-category="Wifi"><span class="setting-svg" aria-hidden="true" style="background-color: rgb(10, 132, 255);"><svg width="12" height="12" viewBox="0 0 24 24"><path d="M3 10 C8 5.5 16 5.5 21 10 M6.5 13.5 C10 10.5 14 10.5 17.5 13.5 M9.5 17 C11 15.7 13 15.7 14.5 17" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></path><circle cx="12" cy="19.5" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><span class="setting-nav-text">Wifi</span></button>
+                    <button class="setting-nav-btn" data-category="Sound"><span class="setting-svg" aria-hidden="true" style="background-color: rgb(255, 45, 85);"><svg width="12" height="12" viewBox="0 0 24 24"><path d="M5 9 H8.5 L13 5 V19 L8.5 15 H5 Z" fill="currentColor" stroke="none"></path><path d="M16 9.5 C17.2 10.8 17.2 13.2 16 14.5 M18.5 7.5 C20.5 9.7 20.5 14.3 18.5 16.5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></path></svg></span><span class="setting-nav-text">Sound</button>
+                    <button class="setting-nav-btn" data-category="Appearance"><span class="setting-svg" aria-hidden="true" style="background-color: rgb(29, 29, 34);"><svg width="12" height="12" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></circle><path d="M12 4 A8 8 0 0 1 12 20 Z" fill="currentColor" stroke="none"></path></svg></span><span class="setting-nav-text">Appearance</button>
+                    <button class="setting-nav-btn" data-category="Battery"><span class="setting-svg" aria-hidden="true" style="background-color: rgb(52, 199, 89);"><svg width="13" height="12" viewBox="0 0 28 14"><rect x="1.5" y="2" width="20" height="10" rx="2.5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></rect><rect x="4" y="4.5" width="12" height="5" rx="1" fill="currentColor" stroke="none"></rect><path d="M24 5.5 C25 6 25 8 24 8.5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></path></svg></span><span class="setting-nav-text">Battery</button>
+                    <button class="setting-nav-btn" data-category="General"><span class="setting-svg" aria-hidden="true" style="background-color: rgb(142, 142, 147);"><svg width="12" height="12" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></circle><path d="M12 3.5 V6 M12 18 V20.5 M3.5 12 H6 M18 12 H20.5 M6 6 L7.8 7.8 M16.2 16.2 L18 18 M18 6 L16.2 7.8 M7.8 16.2 L6 18" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></path></svg></span><span class="setting-nav-text">General</button>
+                    <button class="setting-nav-btn" data-category="Display"><span class="setting-svg" aria-hidden="true" style="background-color: rgb(10, 132, 255);"><svg width="12" height="12" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></rect><path d="M9 20 H15" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></path></svg></span><span class="setting-nav-text">Display</button>
+                    <button class="setting-nav-btn" data-category="User"><span class="setting-svg" aria-hidden="true" style="background-color: rgb(142, 142, 147);"><svg width="12" height="12" viewBox="0 0 24 24"><circle cx="12" cy="9" r="3.5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></circle><path d="M5 20 C6 15.8 9 14.5 12 14.5 C15 14.5 18 15.8 19 20" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"></path></svg></span><span class="setting-nav-text">User</button>
             </div>
         </div>
         <div class="setting-content">
@@ -1191,9 +1191,9 @@ document.body.addEventListener('click', (e) => {
                             <span>Light</span>
                                             
                         </div>
-                        <div class="dark-mode">
-                            <button class="current-theme" id="dark-mode">
-                                <div class="dark-tab">
+                        <div class="dark-mode ">
+                            <button class="current-theme active" id="theme-dark">
+                                <div class="dark-tab ">
                                     <span class="theme-title" id="title-dark"></span>
                                     <span class="theme-content" id="content-dark"></span>
                                 </div>
@@ -1351,8 +1351,6 @@ document.body.addEventListener('click',(e)=>{
 
     const colour=wallpaper.dataset.color;
 
-    
-
     const wallpapers=document.querySelectorAll('.wallpaper-tab');
     wallpapers.forEach(item =>
         item.classList.remove('active'));
@@ -1362,3 +1360,33 @@ document.body.addEventListener('click',(e)=>{
     background.style.background=colour;
 
 })
+
+function convertbrightness(brightness){
+    return 1-(brightness/100);
+}
+document.body.addEventListener('input',(e)=>{
+    const brightness=e.target.classList.contains('brightness-slider');
+    if(!brightness) return;
+    const brightnessValue=e.target.value;
+    const currValue=convertbrightness(brightnessValue);
+
+    const brightnessDesktop=document.querySelector('.desktop-brightness');
+    brightnessDesktop.style.opacity=currValue;
+})
+
+document.body.addEventListener('click', (e) => {
+    const themeBtn = e.target.closest('.current-theme');
+    if (!themeBtn) return;
+
+    // TODO: clear .active from both buttons, add to themeBtn
+    document.querySelectorAll('.current-theme').forEach(btn => btn.classList.remove('active'));
+    themeBtn.classList.add('active');
+    // TODO: check themeBtn.id — if it's the light one, add 'light-theme' 
+    //       to document.body's classList; if dark, remove it
+    if(themeBtn.id==='theme-light'){
+        document.body.classList.add('light-theme');
+    }
+    else{
+        document.body.classList.remove('light-theme');
+    }
+});

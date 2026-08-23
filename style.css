@@ -10,6 +10,33 @@ body {
 
 }
 
+:root{
+    --window-bg: rgb(35, 35, 39);
+    --titlebar-bg: rgba(43, 43, 47, 0.97);
+    --navbar-bg: rgba(24, 24, 28, 0.55);
+    --text-color: white;
+    --content-bg: rgb(30, 30, 30);
+    --sidebar-bg: #2C2C2F;
+    --panel-bg: #232327;
+    --card-bg: lab(13.9388 1.37861 -4.67547 / 0.6);
+    --text-dim: rgba(255, 255, 255, 0.45);
+    --stab:#2C2C2E;
+    --stab-border:#3E3E40;
+}
+
+body.light-theme{
+    --window-bg: rgb(245, 245, 247);
+    --titlebar-bg: rgba(255, 255, 255, 0.97);
+    --navbar-bg: rgba(255, 255, 255, 0.7);
+    --text-color: #1a1a1a;
+    --content-bg: rgb(240, 240, 242);
+    --sidebar-bg: #ececec;
+    --panel-bg: #f5f5f5;
+    --card-bg: rgba(255, 255, 255, 0.75);
+    --text-dim: rgba(0, 0, 0, 0.45);
+    --stab:#fff;
+    --stab-border:#d8d8da;
+}
 .wallpaper{
     position: fixed;
     left:0px;
@@ -32,10 +59,10 @@ body {
     align-items:center;
     justify-content:space-between;
     height:28px;
-    background-color:rgba(24, 24, 28, 0.55);
+    background-color:var(--navbar-bg);
     -webkit-backdrop-filter:blur(10px);
     backdrop-filter:blur(10px);
-    color:white;
+    color:var(--text-color);
     font-size:13px;
     z-index:1;
     
@@ -55,7 +82,7 @@ body {
     display:block;
     height:27px;
     cursor:pointer;
-    color:white;
+    color: var(--text-color);
     padding:0px 10px;
 }
 .nav-menu {
@@ -81,13 +108,13 @@ body {
 .tab{
     -webkit-backdrop-filter:blur(40px);
     backdrop-filter:blur(40px);
-    background-color:lab(13.9388 1.37861 -4.67547 / 0.6);
+    background-color:var(--card-bg);
     height:122px;
     width:286px; 
     border:1px solid rgba(245, 245, 247, 0.219);
     border-radius:18px;
     padding:10px;
-    color:rgba(255, 255, 255, 0.45);
+    color:var(--text-dim);
     font-size:10px;
     text-align:left;
     gap:2px;
@@ -163,7 +190,7 @@ footer{
 .window {
     height: 550px;
     width: 820px;
-    background-color: rgb(35, 35, 39);
+    background-color: var(--window-bg);
     -webkit-backdrop-filter:blur(18px);
     backdrop-filter: blur(18px);
     /* border: 1px solid oklab(100% 0 -0.00011 / 0.593); */
@@ -182,8 +209,8 @@ footer{
 
 .titlebar {
     height: 34px;
-    color:white;
-    background-color:rgba(43, 43, 47, 0.97);
+    color:var(--text-color);
+    background-color:var(--titlebar-bg);
     display: flex;
     align-items: center;
     padding: 0 12px;
@@ -242,15 +269,15 @@ footer{
     margin-left: 8px;
     color: #555;
     font-size: 13px;
-    color: var(--os-text);
+    color: var(--text-color);
     
 }
 
 .content {
     flex: 1;
     padding: 16px 18px;
-    color: #fff;
-    background-color:rgb(30, 30, 30);
+    color: var(--text-color);
+    background-color:var(--content-bg);
     font-size: 14px;
     line-height: 1.6;
     overflow: auto;
@@ -313,12 +340,12 @@ footer{
 .temp{
     font-size:24px;
     font-weight:600;
-    color:rgb(245, 245, 247);
+    color:var(--text-color);
 }
 
 .condition{
     font-size:13px;
-    color:rgba(255, 255, 255, 0.45);
+    color:var(--text-dim);
 }
 
 .window {
@@ -629,7 +656,7 @@ footer{
 }
 
 #india-time{
-    color:white;
+    color:var(--text-color);
     font-size: 32px;
     margin: 0;
     position: absolute;
@@ -678,7 +705,7 @@ footer{
 #music button{
     background:none;
     border:none;
-    color:white;
+    color:var(--text-color);
     cursor:pointer;
 }
 
@@ -691,7 +718,7 @@ footer{
 }
 
 .song-name{
-    color:white;
+    color:var(--text-color);
     font-size:12px;
 }
 .progress-container{
@@ -709,7 +736,7 @@ footer{
 .progress-bar{
     position:relative;
     z-index:3;
-    background-color:white;
+    background-color:var(--text-color);
     width:0%;
     height:100%;
 }
@@ -837,7 +864,7 @@ footer{
 } */
 .calendar-grid .today {
     background: #f3350c;
-    color:white;
+    color:var(--text-color);
     border-radius: 50%;
     width: 15px;
     height: 13px;
@@ -855,7 +882,7 @@ footer{
 
 .dropdown-selected {
     background: transparent;
-    color: rgba(255, 255, 255, 0.45);
+    color: var(--text-dim);
     padding-bottom:1px;
     font-size: 13px;
     
@@ -881,7 +908,7 @@ footer{
 .dropdown-options div {
     padding: 4px 8px;
     font-size: 10px;
-    color: rgba(255, 255, 255, 0.45);
+    color: var(--text-dim);
 }
 
 .dropdown-options div:hover {
@@ -910,7 +937,7 @@ footer{
 .finder-nav{
     height:100%;
     width:165px;
-    background: #2C2C2F;
+    background: var(--sidebar-bg);
     padding:10px;
     border-right:1px solid rgba(255, 255, 255, 0.1);
 }
@@ -920,11 +947,11 @@ footer{
     height:100%;
     width:85%;
     overflow:hidden;
-    background:#232327;
+    background:var(--panel-bg);
 }
 .finder-nav p{
     margin: 0px;
-    color: rgba(255, 255, 255, 0.45);
+    color: var(--text-dim);
     font-weight: 700;
     font-size: 11px;
     padding-left: 9px;
@@ -932,7 +959,7 @@ footer{
 .finder-btn{
     background: none;
     border: none;
-    color: white;
+    color: var(--text-color);
     width:100%;
     border-radius:6px;
     display: flex;
@@ -957,7 +984,7 @@ footer{
 .finder-title{
     font-size:15px;
     font-weight:600;
-    color:#fff;
+    color:var(--text-color);
 }
 
 .finder-body{
@@ -995,12 +1022,12 @@ footer{
     margin-top: 10px;
     font-size: 14px;
     font-weight: 600;
-    color: #fff;
+    color: var(--text-color);
 }
 
 .finder-card-subtitle {
     font-size: 12px;
-    color: #999;
+    color: var(--text-dim);
     margin-top: 2px;
 }
 
@@ -1030,7 +1057,7 @@ footer{
 .finder-detail-title{
     font-size:28px;
     font-weight:700;
-    color:#fff;
+    color:var(--text-color);
     margin-top:28px;
     max-width:780px;
     margin-left:auto;
@@ -1038,7 +1065,7 @@ footer{
 }
 .finder-detail-subtitle{
     font-size: 14px;
-    color: #999;
+    color: var(--text-dim);
     margin-top: 6px;
     max-width:780px;
     margin-left:auto;
@@ -1047,7 +1074,7 @@ footer{
 .finder-detail-description{
     font-size:14px;
     line-height:1.6;
-    color:#ccc;
+    color:var(--text-dim);
     margin-top:18px;
     max-width:780px;
     margin-left:auto;
@@ -1069,7 +1096,7 @@ footer{
     padding:6px 8px;
 }
 .finder-nav-title{
-    color:#fff;
+    color:var(--text-color);
 }
 .finder-nav-items.active {
   background: rgba(255, 255, 255, 0.08);
@@ -1088,7 +1115,7 @@ footer{
 .app-store-nav {
   width: 165px;
   flex-shrink: 0;
-  background: #2C2C2F;
+  background: var(--sidebar-bg);
   padding: 16px 10px;
   display: flex;
   flex-direction: column;
@@ -1099,7 +1126,7 @@ footer{
 .app-store-nav-btn {
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.05);
-  color: #ccc;
+  color: var(--text-color);
   text-align: left;
   padding: 8px 12px;
   border-radius: 6px;
@@ -1114,14 +1141,14 @@ footer{
 
 .app-store-nav-btn.active {
   background: rgba(255, 255, 255, 0.525);
-  color: #fff;
+  color: var(--text-color);
 }
 
 .app-store-content {
   flex: 1;
   display: flex;
   flex-direction: column;
-  background: #232327;
+  background: var(--panel-bg);
   overflow: hidden;
 }
 
@@ -1156,12 +1183,12 @@ footer{
 .app-name {
   font-size: 15px;
   font-weight: 600;
-  color: #fff;
+  color: var(--text-color);
 }
 
 .app-tagline {
   font-size: 13px;
-  color: #999;
+  color: var(--text-dim);
   margin-top: 2px;
 }
 
@@ -1185,8 +1212,9 @@ footer{
     padding: 8px 12px;
     border-radius: 6px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.05);
-    color: #fff;
+    /* background: rgba(255, 255, 255, 0.05); */
+    background:var(--text-dim);
+    color: var(--text-color);
     font-size: 13px;
     outline: none;
 }
@@ -1200,7 +1228,7 @@ footer{
 .app-store-heading {
   font-size: 13px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--text-dim);
   letter-spacing: 0.5px;
   margin: 5px 0 10px;
 }
@@ -1239,12 +1267,12 @@ footer{
 .game-name {
   font-size: 15px;
   font-weight: 700;
-  color: #fff;
+  color: var(--text-color);
 }
 
 .game-tag {
   font-size: 13px;
-  color: #999;
+  color: var(--text-dim);
   margin-top: 2px;
 
 }
@@ -1259,7 +1287,7 @@ footer{
 
 .game-headline{
     margin-top:5px;
-    color:rgba(255, 255, 255, 0.5);
+    color:var(--text-dim);
     font-weight: 500;
     letter-spacing: 0.5px;
     font-size:13px;
@@ -1321,7 +1349,7 @@ footer{
     padding: 4px 10px;
 }
 .setting-nav{
-    background-color:#2C2C2F;
+    background-color:var(--sidebar-bg);
     display:flex;
     flex-direction:column;
     width:215px;
@@ -1347,7 +1375,9 @@ footer{
     font-size:13px;
     padding:5px 8px;
 }
-
+.setting-nav-text{
+    color:var(--text-color)
+}
 .setting-svg{
     display:flex;
     justify-content:center;
@@ -1358,10 +1388,11 @@ footer{
     margin-right:10px;
 }
 .setting-nav-btn.active{
-    background:blue;
+    background:#0d6efd;
+    border-radius:6px;
 }
 .setting-content{
-    height:100%;
+    background:var(--panel-bg);
     width:100%;
     padding:16px 20px;
 }
@@ -1371,9 +1402,9 @@ footer{
 }
 
 .setting-tab{
-    background:#2C2C2E;
+    background:var(--stab);
     border-radius:8px;
-    border:1px solid #3E3E40;
+    border:1px solid var(--stab-border);
     font-size:14px;
     font-weight:500;
 }
@@ -1386,7 +1417,7 @@ footer{
 .setting-line{
     width: 100%;
     height: 0.5px;
-    background: #3E3E40;
+    background: var(--stab-border);
     /* margin-left: 2%; */
 }
 .setting-heading h1{
@@ -1421,7 +1452,7 @@ footer{
     flex-direction:column;
     font-size:11px;
     font-weight:400px;
-    color:lightgrey;
+    color:var(--text-dim);
 }
 .switch{
     display:flex;
@@ -1463,7 +1494,7 @@ footer{
 }
 
 .sub-heading{
-    color: rgba(255, 255, 255, 0.45);
+    color: var(--text-dim);
     margin-top: 12px;
     padding: 6px 12px;
     font-weight: bold;
@@ -1489,7 +1520,7 @@ footer{
 }
 .sl{
     font-size:14px;
-    color:rgb(132, 126, 126);
+    color:var(--text-dim);
 }
 .setting-heading h1{
     margin:0;
@@ -1503,7 +1534,7 @@ footer{
 }
 .setting-msg{
     font-size:11px;
-    color:rgb(132, 126, 126);
+    color:var(--text-dim);
     margin-top:6px;
     margin-bottom:10px;
     padding:0px 12px;
@@ -1511,7 +1542,7 @@ footer{
 }
 
 .setting-arrow{
-    color:rgb(132, 126, 126);
+    color:var(--text-dim);
 }
 .user-profile{
     display:flex;
@@ -1520,7 +1551,7 @@ footer{
     height:28px;
     width:28px;
     background-color:red;
-    color:#fff;
+    color:var(--text-color);
     border-radius:50%;
     font-size:13px;
     font-weight:bold;
@@ -1558,7 +1589,7 @@ footer{
     justify-content:space-between;
     font-size:11px;
     font-weight:400;
-    color:lightgrey;
+    color:var(--text-dim);
     align-items:center;
 }
 .light-mode{
@@ -1567,12 +1598,13 @@ footer{
     gap:3px;
     align-items:center;
 }
-.dark-mode{
+.theme-dark{
     display:flex;
     flex-direction:column;
     gap:3px;
     align-items:center;
 }
+
 
 .theme-right{
     display:flex;
@@ -1590,6 +1622,10 @@ footer{
     border:none;
     border-radius:6px;
 }
+.current-theme.active{
+    border:1px solid #0d6efd;
+    border-radius:6px;
+}
 #appearance-heading{
     margin-bottom:0;
 }
@@ -1597,17 +1633,27 @@ footer{
     font-size:14px;
     font-weight:500;
     margin-left:12px;
-    color:#fff;
+    color:var(--text-color);
     
 }
 .dark-tab{
+    background: rgb(30, 30, 30);
     height:100%;
     width:100%;
+    border-radius:6px;
 }
+/* .dark-tab.active{
+    border:2px solid #0d6efd;
+    border-radius:5px;
+}
+.light-tab.active{
+    border:2px solid #0d6efd;
+    border-radius:5px;
+} */
 #title-light{
     background:#c5c5c5;
     display:flex;
-    height:12px;
+    height:11px;
     border-radius: 5px 5px 0px 0px;
 }
 #content-light{
@@ -1617,8 +1663,9 @@ footer{
 }
 #title-dark{
     background:rgba(43, 43, 47, 0.97);
-    height:12px;
+    height:11px;
     display:flex;
+    border-radius:5px 5px 0 0;
 }
 #content-dark{
     display:block;
@@ -1664,7 +1711,7 @@ footer{
 } */
 .wp-name{
     font-size:13px;
-    color:#fff;
+    color:var(--text-color);
 }
 .wallpaper-tab.active .wp-color{
     border:2px solid #0d6efd;
