@@ -22,6 +22,7 @@ body {
     --text-dim: rgba(255, 255, 255, 0.45);
     --stab:#2C2C2E;
     --stab-border:#3E3E40;
+    --search-bar:rgba(255, 255, 255, 0.05);
 }
 
 body.light-theme{
@@ -36,6 +37,7 @@ body.light-theme{
     --text-dim: rgba(0, 0, 0, 0.45);
     --stab:#fff;
     --stab-border:#d8d8da;
+    --search-bar: rgba(0, 0, 0, 0.08);
 }
 .wallpaper{
     position: fixed;
@@ -745,6 +747,9 @@ footer{
     padding-top: 3px;
     bottom: -12px;
 }
+.prev-btn{
+    background:var(--text-color);
+}
 .play-pause-btn.playing .icon-play {
     display: none;
 }
@@ -1213,7 +1218,7 @@ footer{
     border-radius: 6px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     /* background: rgba(255, 255, 255, 0.05); */
-    background:var(--text-dim);
+    background:var(--search-bar);
     color: var(--text-color);
     font-size: 13px;
     outline: none;
@@ -1446,6 +1451,7 @@ footer{
     font-size:15px;
     display:flex;
     align-items:end;
+    color:var(--text-color)
 }
 .wifi-status{
     display:flex;
@@ -1623,7 +1629,7 @@ footer{
     border-radius:6px;
 }
 .current-theme.active{
-    border:1px solid #0d6efd;
+    border:2px solid #0d6efd;
     border-radius:6px;
 }
 #appearance-heading{
@@ -1640,7 +1646,7 @@ footer{
     background: rgb(30, 30, 30);
     height:100%;
     width:100%;
-    border-radius:6px;
+    border-radius:4px;
 }
 /* .dark-tab.active{
     border:2px solid #0d6efd;
@@ -1670,7 +1676,7 @@ footer{
 #content-dark{
     display:block;
     background:rgb(30, 30, 30);
-    height:26px;
+    height:25px;
     border-radius:0 0 5px 5px;
 }
 
@@ -1701,9 +1707,11 @@ footer{
 
 .wp-color{
     width:100%;
+    max-width:300px;
     aspect-ratio:16/10;
     border-radius:8px;
     border:2px solid transparent;
+    
 }
 
 /* .wallpaper-item.active .wp-color{
@@ -1729,4 +1737,20 @@ footer{
     top: 0;
     bottom: 0;
     pointer-events:none;
+}
+
+.general-btn{
+    background:none;
+    border:none;
+    cursor:pointer;
+}
+.general-back{
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    align-items: center;
+    font-size: 14px;
+    cursor: pointer;
+    width: min-content;
+    color: orangered;
 }

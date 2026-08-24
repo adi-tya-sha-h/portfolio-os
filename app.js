@@ -559,6 +559,9 @@ dockButtons.forEach(button => {
     if(id==='appstore'){
         renderAppList('tech');
     }
+    if(id==='setting'){
+        document.querySelector('[data-category="Wifi"]').click();
+    }
   });
 });
 
@@ -1077,7 +1080,14 @@ document.body.addEventListener('click', (e) => {
     }
 });
 
-
+function activeIfWallpaper(name){
+    return currWallpaper==name?'active':'';
+}
+function activeIfThemeIs(theme){
+    return currTheme==theme?'active':'';
+}
+let currWallpaper = 'ember';
+let currTheme='theme-dark';
 document.body.addEventListener('click', (e) => {
     const settingNavBtn = e.target.closest('.setting-nav-btn');
     const settings=document.querySelector('.setting-content');
@@ -1102,18 +1112,18 @@ document.body.addEventListener('click', (e) => {
                             <div class="wifi-connected-logo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
      xmlns="http://www.w3.org/2000/svg">
   <path d="M2.5 8.5C6.8 4.4 13.7 3.8 18.5 6.8"
-        stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+        stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
   <path d="M5.5 12C8.5 9.2 12.8 8.7 16.2 10.2"
-        stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+        stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
   <path d="M8.8 15.5C9.8 14.5 11.1 14 12.4 14"
-        stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+        stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
 
   <!-- Lock -->
   <rect x="12.5" y="14.5" width="8" height="6.5"
-        rx="1.2" fill="white"/>
+        rx="1.2" fill="currentColor"/>
   <path d="M14.5 14.5V12.8C14.5 11.4 15.4 10.5 16.5 10.5
            C17.6 10.5 18.5 11.4 18.5 12.8V14.5"
-        stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+        stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
   <circle cx="16.5" cy="17.6" r="0.8" fill="#292A30"/>
 </svg></div> <span class="wifi-status"><span class="network-name"> Adi</span><span>Secured</span></span>
                             
@@ -1181,7 +1191,7 @@ document.body.addEventListener('click', (e) => {
                     <span class="appearance-subtitle">Appearance</span>
                     <div class="theme-right">
                         <div class="light-mode">
-                            <button class="current-theme" id="theme-light">
+                            <button class="current-theme ${activeIfThemeIs('theme-light')}" id="theme-light" data-theme="theme-light">
                                     <div class="light-tab">
                                         <span class="theme-title" id="title-light"></span>
                                         <span class="theme-content" id="content-light"></span>
@@ -1192,7 +1202,7 @@ document.body.addEventListener('click', (e) => {
                                             
                         </div>
                         <div class="dark-mode ">
-                            <button class="current-theme active" id="theme-dark">
+                            <button class="current-theme ${activeIfThemeIs('theme-dark')}" id="theme-dark" data-theme="theme-dark">
                                 <div class="dark-tab ">
                                     <span class="theme-title" id="title-dark"></span>
                                     <span class="theme-content" id="content-dark"></span>
@@ -1212,27 +1222,27 @@ document.body.addEventListener('click', (e) => {
             </div>
             <div class="sub-heading">WALLPAPERS</div>
             <div class="wallpaper-grid">
-                <div class="wallpaper-tab active" data-wallpaper="ember" data-color="radial-gradient(90rem 60rem at 110% -10%, #f3350c8c, #0000 60%), radial-gradient(70rem 50rem at -10% 40%, #7a1d0580, #0000 55%), linear-gradient(160deg, #2a0f08 0%, #120a08 100%)">
+                <div class="wallpaper-tab ${activeIfWallpaper('ember')}" data-wallpaper="ember" data-color="radial-gradient(90rem 60rem at 110% -10%, #f3350c8c, #0000 60%), radial-gradient(70rem 50rem at -10% 40%, #7a1d0580, #0000 55%), linear-gradient(160deg, #2a0f08 0%, #120a08 100%)">
                     <div class="wp-color" style="background:#94260E;"></div>
                     <span class="wp-name">Ember</span>
                 </div>
-                <div class="wallpaper-tab" data-wallpaper="dynamic" data-color="radial-gradient(90rem 60rem at 110% -10%, #f3350c73, #0000 60%), radial-gradient(70rem 50rem at -10% 40%, #5626766b, #0000 55%), radial-gradient(60rem 50rem at 50% 125%, #1c387266, #0000 65%), linear-gradient(160deg, #121214 0%, #1b191f 100%)">
+                <div class="wallpaper-tab ${activeIfWallpaper('dynamic')}" data-wallpaper="dynamic" data-color="radial-gradient(90rem 60rem at 110% -10%, #f3350c73, #0000 60%), radial-gradient(70rem 50rem at -10% 40%, #5626766b, #0000 55%), radial-gradient(60rem 50rem at 50% 125%, #1c387266, #0000 65%), linear-gradient(160deg, #121214 0%, #1b191f 100%)">
                     <div class="wp-color" style="background:#762B38;"></div>
                     <span class="wp-name">Dynamic</span>
                 </div>
-                <div class="wallpaper-tab" data-wallpaper="violet" data-color="radial-gradient(90rem 60rem at 110% -10%, #7a46b480, #0000 60%), radial-gradient(60rem 50rem at 50% 125%, #1c387266, #0000 65%), linear-gradient(160deg, #1a1424 0%, #161320 100%)">
+                <div class="wallpaper-tab ${activeIfWallpaper('violet')}" data-wallpaper="violet" data-color="radial-gradient(90rem 60rem at 110% -10%, #7a46b480, #0000 60%), radial-gradient(60rem 50rem at 50% 125%, #1c387266, #0000 65%), linear-gradient(160deg, #1a1424 0%, #161320 100%)">
                     <div class="wp-color" style="background:#443270;"></div>
                     <span class="wp-name">Violet</span>
                 </div>
-                <div class="wallpaper-tab" data-wallpaper="slate" data-color="radial-gradient(80rem 60rem at 80% 0, #787a8247, #0000 60%), linear-gradient(160deg, #2c2c33 0%, #0d0d0f 100%)">
+                <div class="wallpaper-tab ${activeIfWallpaper('slate')}" data-wallpaper="slate" data-color="radial-gradient(80rem 60rem at 80% 0, #787a8247, #0000 60%), linear-gradient(160deg, #2c2c33 0%, #0d0d0f 100%)">
                     <div class="wp-color" style="background:#35363B;"></div>
                     <span class="wp-name">Slate</span>
                 </div>
-                <div class="wallpaper-tab" data-wallpaper="dawn" data-color="radial-gradient(90rem 60rem at 110% -10%,#f3350c38,#0000 60%),radial-gradient(80rem 50rem at -10% 30%,#ffb88a73,#0000 55%),linear-gradient(160deg,#fbf4ef 0%,#f0dccf 100%)">
+                <div class="wallpaper-tab ${activeIfWallpaper('dawn')}" data-wallpaper="dawn" data-color="radial-gradient(90rem 60rem at 110% -10%,#f3350c38,#0000 60%),radial-gradient(80rem 50rem at -10% 30%,#ffb88a73,#0000 55%),linear-gradient(160deg,#fbf4ef 0%,#f0dccf 100%)">
                     <div class="wp-color" style="background:#F6B89E;"></div>
                     <span class="wp-name">Dawn</span>
                 </div>
-                <div class="wallpaper-tab" data-wallpaper="midnight" data-color="radial-gradient(80rem 60rem at 100% -10%, #2850a066, #0000 60%), radial-gradient(60rem 50rem at 30% 120%, #56267666, #0000 60%), linear-gradient(160deg, #0a0c14 0%, #0c0a12 100%)">
+                <div class="wallpaper-tab ${activeIfWallpaper('midnight')}" data-wallpaper="midnight" data-color="radial-gradient(80rem 60rem at 100% -10%, #2850a066, #0000 60%), radial-gradient(60rem 50rem at 30% 120%, #56267666, #0000 60%), linear-gradient(160deg, #0a0c14 0%, #0c0a12 100%)">
                     <div class="wp-color" style="background:#252A5B;"></div>
                     <span class="wp-name">Midnight</span>
                 </div>
@@ -1241,7 +1251,7 @@ document.body.addEventListener('click', (e) => {
             break;
         case 'Battery':
             settings.innerHTML=`
-            <div class=setting-battery>
+            <div class="setting-battery">
                 <div class="setting-heading">
                     <h1>Battery</h1>
                 </div>
@@ -1264,7 +1274,22 @@ document.body.addEventListener('click', (e) => {
             </div>`;
             break;
         case 'General':
-            settings.innerHTML=`<div>general</div>`;
+            settings.innerHTML=`
+            <div class="setting-general">
+                <div class="setting-heading"><h1>General</h1></div>
+                <div class="setting-tab">
+                    <div class="setting-tab-element">
+                        <span class="ml">About</span>
+                        <button class="general-btn" id="about" data-category="about"><span class="sl"><svg class="setting-arrow" width="7" height="11" viewBox="0 0 7 11" aria-hidden="true"><path d="M1 1 L6 5.5 L1 10" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></button>
+                    </div>
+                    <div class="setting-line"></div>
+                    <div class="setting-tab-element">
+                        <span class="ml">Software Update</span>
+                        <button class="general-btn" id="software" data-category="software"><span class="sl"><svg class="setting-arrow" width="7" height="11" viewBox="0 0 7 11" aria-hidden="true"><path d="M1 1 L6 5.5 L1 10" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></button>
+                    </div>
+                </div>
+            </div>
+            `;
             break;
         case 'Display':
             settings.innerHTML=`
@@ -1350,6 +1375,7 @@ document.body.addEventListener('click',(e)=>{
     if(!wallpaper) return;
 
     const colour=wallpaper.dataset.color;
+    currWallpaper = wallpaper.dataset.wallpaper;
 
     const wallpapers=document.querySelectorAll('.wallpaper-tab');
     wallpapers.forEach(item =>
@@ -1378,15 +1404,95 @@ document.body.addEventListener('click', (e) => {
     const themeBtn = e.target.closest('.current-theme');
     if (!themeBtn) return;
 
-    // TODO: clear .active from both buttons, add to themeBtn
     document.querySelectorAll('.current-theme').forEach(btn => btn.classList.remove('active'));
     themeBtn.classList.add('active');
-    // TODO: check themeBtn.id — if it's the light one, add 'light-theme' 
-    //       to document.body's classList; if dark, remove it
     if(themeBtn.id==='theme-light'){
         document.body.classList.add('light-theme');
+        currTheme=themeBtn.dataset.theme;
     }
     else{
         document.body.classList.remove('light-theme');
+        currTheme=themeBtn.dataset.theme;
     }
 });
+
+document.body.addEventListener('click',(e)=>{
+    const container=document.querySelector('.setting-general');
+    if(!container) return;
+    const generalBtn=e.target.closest('.general-btn');
+    if(!generalBtn) return;
+    console.log('button was clicked');
+
+    const theme=generalBtn.dataset.category;
+    if(theme==='about'){
+        container.innerHTML=`
+        <div class="general-back"><span class="back-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 4 L7 12 L15 20" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+        <span>General</span>
+        </div>
+        <div class="setting-heading">
+            <h1>About</h1>
+        </div>
+        <div class="setting-tab">
+            <div class="setting-tab-element">
+                <span class="ml">Name</span>
+                <span class="sl">Adi's MacOS</span>
+            </div>
+            <div class="setting-line"></div>
+            <div class="setting-tab-element">
+                <span class="ml">Version</span>
+                <span class="sl">1.0</span>
+            </div>
+            <div class="setting-line"></div>
+            <div class="setting-tab-element">
+                <span class="ml">Developer</span>
+                <span class="sl">Aditya Shah</span>
+            </div>
+            <div class="setting-line"></div>
+            <div class="setting-tab-element">
+                <span class="ml">Stack Used</span>
+                <span class="sl">Vanila JS</span>
+            </div>
+        </div>
+        `
+    }
+    else if(theme=='software'){
+        container.innerHTML=`
+        <div class="general-back"><span class="back-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 4 L7 12 L15 20" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></span> 
+        <span>General</span>
+        </div>
+        <div class="setting-heading">
+            <h1>Software Update</h1>
+        </div>
+        <div class="setting-tab">
+            <div class="setting-tab-element">
+                <span class="ml">Website</span>
+                <span class="sl">Upto Date</span>
+            </div>
+            <div class="setting-line"></div>
+            <div class="setting-tab-element">
+                <span class="ml">Last Updated</span>
+                <span class="sl">26/08/2026</span>
+            </div>
+            <div class="setting-line"></div>
+            <div class="setting-tab-element">
+                <span class="ml">Auto Update</span>
+                <span class="sl">
+                    <span class="switch"><svg width="9" height="11" viewBox="0 0 12 14" class="text-(--os-text-dim)" aria-hidden="true"><rect x="1" y="6" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.4" fill="none"></rect><path d="M3.5 6 V4 a2.5 2.5 0 0 1 5 0 V6" stroke="currentColor" stroke-width="1.4" fill="none"></path></svg>
+                        <button role="switch" aria-checked="true" aria-label="Wi-Fi always on" disabled="" class="switch-container">
+                            <span class="switch-ball"></span>
+                        </button>
+                    </span>
+                </span>
+            </div>
+        </div>
+        `
+    }
+})
+
+document.body.addEventListener('click',(e)=>{
+    const generalBack=e.target.closest('.general-back');
+    if(!generalBack) return;
+
+    console.log("back is clicked");
+    document.querySelector('[data-category="General"]').click();
+})
