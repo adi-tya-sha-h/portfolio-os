@@ -32,9 +32,32 @@ const apps = [
     </div>`, 
     top: 60, left: 345 
   },
-  {
-    id:'safari',title:'Safari', html:`
-    
+  {id:'safari',title:'Safari', html:`
+    <div class="safari">
+        <div class="safari-nav">
+            <div class="bf-arrow">
+                <span class="back-arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 4 L7 12 L15 20" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+                <span class="forward-arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 4 L17 12 L9 20" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+            </div>
+            <div class="search-bar">
+                <div class="website-url"><svg width="9" height="11" viewBox="0 0 12 14" class="text-(--os-text-dim)" aria-hidden="true"><rect x="1" y="6" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.4" fill="none"></rect><path d="M3.5 6 V4 a2.5 2.5 0 0 1 5 0 V6" stroke="currentColor" stroke-width="1.4" fill="none"></path></svg> aditya.shah</div>
+            </div>
+            <div class="bookmark"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M6 4.5C6 3.67 6.67 3 7.5 3H16.5C17.33 3 18 3.67 18 4.5V21L12 17.5L6 21V4.5Z"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linejoin="round"
+                />
+                </svg>
+            </div>
+        </div>
+        <div class="setting-line"></div>
+        <div class="safari-content">
+            
+        </div>
+    </div>
     `,
     top:63,left:343
   },
@@ -338,17 +361,11 @@ const apps = [
     </div>`, top: 80, left: 265 },
   { id: 'terminal', title: 'Terminal', html: `<div class="terminal"><pre>Hey!</pre>
         <pre class="para">Welcome to ADI's Terminal. Write "cmd" to know the commands</pre>
-        <pre class="initcmd">visitor@adi's-os ~ %  </pre></div>`, top: 80, left: 260 },
+        <pre class="initcmd">visitor@adi's-os ~ %  </pre></div>`,
+         top: 80, left: 260 },
   { id: 'trash', title: 'Trash', html: `<div><p>Your Haters</p></div>`
     , top: 69, left: 350 }
 ];
-
-const nowPlaying = {
-  title: "Sirf Tujhse",
-  artist: "Saksham Sehgal",
-  albumArt: "/assets/sirftujhse.png", 
-  duration: 180 
-};
 
 const API_KEY = "17cc714df1ea4a27b7883100262607";
 
@@ -562,6 +579,14 @@ dockButtons.forEach(button => {
     if(id==='setting'){
         document.querySelector('[data-category="Wifi"]').click();
     }
+    // if(id==='safari'){
+    //     renderSafariGrid();
+    // }
+    if (id === 'safari') {
+    safariHistory = [{ view: 'grid' }];
+    historyPointer = 0;
+    renderFromHistory();
+}
   });
 });
 
@@ -1492,7 +1517,126 @@ document.body.addEventListener('click',(e)=>{
 document.body.addEventListener('click',(e)=>{
     const generalBack=e.target.closest('.general-back');
     if(!generalBack) return;
-
-    console.log("back is clicked");
     document.querySelector('[data-category="General"]').click();
 })
+
+const safariSites=[
+    {name:'Portfolio OS',url:'macosportfolio.vercel.com',img:'/assets/websites/macOS.png'},
+    {name:'Notes Ai',url:'NotesAi.netlify.app',img:'/assets/websites/notesai.png'},
+    {name:'Amazon',url:'amazon.com',img:'/assets/websites/amazon.png'}
+];
+
+function renderSafariGrid(){
+    const container=document.querySelector('.safari-content');
+    if(!container) return;
+
+    container.classList.remove('detail-view');
+    container.innerHTML=`
+        <div class="safari-grid">
+            ${safariSites.map((site, index) => `
+                <div class="projects" data-index="${index}">
+                    <img src="${site.img}">
+                    <span class="ml" id="site-name">${site.name}</span>
+                    <span class="sl">${site.url}</span>
+                </div>
+            `).join('')}
+        </div>
+    `;
+
+}         
+
+function renderSafariDetail(site) {
+    const container = document.querySelector('.safari-content');
+    if (!container) return;
+
+    container.classList.add('detail-view');
+    container.innerHTML = `
+        <div class="safari-detail-media">
+            <img class="safari-detail-img" src="${site.img}">
+        </div>
+        <div class="safari-detail-title">${site.name}</div>
+        <div class="safari-detail-subtitle">${site.url}</div>
+    `;
+}
+
+let safariHistory = [{ view: 'grid' }];
+let historyPointer = 0;
+
+function renderFromHistory() {
+    const state = safariHistory[historyPointer];
+
+    if (state.view === 'grid') {
+        renderSafariGrid();
+    } else if (state.view === 'detail') {
+        renderSafariDetail(safariSites[state.index]);
+    }
+
+    updateArrowStates();
+}
+
+function goToDetail(index) {
+    // truncate any "forward" states before pushing new one
+    safariHistory = safariHistory.slice(0, historyPointer + 1);
+
+    safariHistory.push({ view: 'detail', index });
+    historyPointer = safariHistory.length - 1;
+
+    renderFromHistory();
+}
+
+function updateArrowStates() {
+    const backArrow = document.querySelector('.safari .back-arrow');
+    const forwardArrow = document.querySelector('.safari .forward-arrow');
+    if (!backArrow || !forwardArrow) return;
+
+    backArrow.closest('.back-arrow').style.opacity = historyPointer > 0 ? '1' : '0.4';
+    forwardArrow.style.pointerEvents = historyPointer < safariHistory.length - 1 ? 'auto' : 'none';
+}
+
+document.body.addEventListener('click', (e) => {
+    const card = e.target.closest('.projects');
+    if (!card) return;
+
+    const index = Number(card.dataset.index);
+    goToDetail(index);
+});
+document.body.addEventListener('click', (e) => {
+    const backBtn = e.target.closest('.safari .back-arrow');
+    if (!backBtn) return;
+    if (historyPointer === 0) return;
+
+    historyPointer--;
+    renderFromHistory();
+});
+
+document.body.addEventListener('click', (e) => {
+    const forwardBtn = e.target.closest('.safari .forward-arrow');
+    if (!forwardBtn) return;
+    if (historyPointer >= safariHistory.length - 1) return;
+
+    historyPointer++;
+    renderFromHistory();
+});
+
+function renderFromHistory() {
+    const state = safariHistory[historyPointer];
+
+    if (state.view === 'grid') {
+        renderSafariGrid();
+        updateUrlBar('displace.agency');
+    } else if (state.view === 'detail') {
+        const site = safariSites[state.index];
+        renderSafariDetail(site);
+        updateUrlBar(site.url);
+    }
+
+    updateArrowStates();
+}
+
+function updateUrlBar(url) {
+    const urlBar = document.querySelector('.safari .website-url');
+    if (!urlBar) return;
+
+    // keep the lock icon, just swap the text after it
+    urlBar.lastChild.textContent = ' ' + url;
+}

@@ -17,7 +17,7 @@ body {
     --text-color: white;
     --content-bg: rgb(30, 30, 30);
     --sidebar-bg: #2C2C2F;
-    --panel-bg: #232327;
+    --panel-bg: rgb(30, 30, 30);
     --card-bg: lab(13.9388 1.37861 -4.67547 / 0.6);
     --text-dim: rgba(255, 255, 255, 0.45);
     --stab:#2C2C2E;
@@ -74,7 +74,13 @@ body.light-theme{
     justify-content:space-evenly;
     padding:0px 10px;
 }
-
+.nav-btn-left{
+    background:none;
+    color:var(--text-color);
+    border:none;
+    padding:0px 10px;
+    cursor:pointer;
+}
 .btn{
     height:27px;
     padding:0px 10px;
@@ -95,7 +101,6 @@ body.light-theme{
 .logo {
     display: flex;
     align-items: center;
-    margin-right: 12px;
 }
 .nav-menu a{
     padding:0px 10px;   
@@ -187,6 +192,7 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor:default;
 }
 
 .window {
@@ -217,7 +223,6 @@ footer{
     align-items: center;
     padding: 0 12px;
     gap: 8px;
-    cursor: grab;
     user-select: none;
     flex-shrink: 0;
     border-bottom:1px solid rgba(255, 255, 255, 0.1);
@@ -259,9 +264,9 @@ footer{
     opacity: 1;
 }
 
-.titlebar:active {
+/* .titlebar:active {
     cursor: grabbing;
-}
+} */
 
 .dot.red { background: #ff5f57; }
 .dot.yellow { background: #febc2e; }
@@ -375,7 +380,7 @@ footer{
 
 }
 
-.content[data-app="terminal"]{
+.window[data-app="terminal"] .content{
     background:#191920;
 }
 
@@ -928,6 +933,8 @@ footer{
 }
 #active-app-name{
     font-weight:700;
+    margin-left: 20px;
+    margin-right: 10px;
 }
 .window[data-app="finder"] .content{
     padding:0;
@@ -1753,4 +1760,135 @@ footer{
     cursor: pointer;
     width: min-content;
     color: orangered;
+}
+
+.window[data-app="safari"] .content{
+    padding:0;
+}
+.safari{
+    height:100%;
+    width:100%;
+}
+.safari-nav{
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 97%;
+    background: var(--panel-bg);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 12px;
+    justify-content: space-between;
+    overflow: hidden;
+}
+.bf-arrow{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.4;
+}
+.back-arrow{
+    display:block;
+    justify-content:center;
+    align-items:center;
+}
+.forward-arrow{
+    display:block;
+    justify-content:center;
+    align-items:center;
+    opacity:0.4;
+}
+.search-bar{
+    background: var(--sidebar-bg);
+    border-radius: 3px;
+    border: 1px solid var(--stab-border);
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    height: 18px;
+    padding: 6px 12px;
+    width: 84%;
+}
+.bookmark{
+    display:block;
+    height:30px;
+    width:30px;
+}
+.website-url{
+    opacity:0.6;
+}
+.safari-content{
+    height: 100%;
+    width: 97%;
+    padding: 8px 12px;
+}
+.safari-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    padding:10px 20px;
+    
+}
+.projects{
+    border-radius:12px;
+    height:100%;
+    width:100%;
+    
+    border:1px solid var(--titlebar-bg);
+}
+.projects img{
+    width:100%;
+    object-fit:cover;
+    aspect-ratio:16/10;
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+}
+.projects span{
+    padding-left:10px;
+}
+#site-name{
+    font-weight:500;
+}
+.projects:hover .projects img {
+    transform: scale(1.08);
+}
+.safari-content.detail-view {
+    display: block;
+    padding: 20px 12px;
+    scrollbar-width:none;
+}
+.safari-detail-media{
+    width:100%;
+    max-width:780px;
+    margin:0 auto;
+    border-radius:12px;
+    overflow:hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background:#1a1a1c;
+}
+.safari-detail-img{
+    width:100%;
+    max-height:460px;
+    object-fit:cover;
+    display:block;
+}
+.safari-detail-title{
+    font-size:28px;
+    font-weight:700;
+    color:var(--text-color);
+    margin-top:28px;
+    max-width:780px;
+    margin-left:auto;
+    margin-right:auto;
+}
+.safari-detail-subtitle{
+    font-size: 14px;
+    color: var(--text-dim);
+    margin-top: 6px;
+    max-width:780px;
+    margin-left:auto;
+    margin-right:auto;
 }
