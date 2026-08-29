@@ -5,17 +5,22 @@ draggable windows, a dock, and custom "apps" that showcase my work.
 
 Inspired by [displace.agency](https://displace.agency).
 
-## 🚧 Status
-Work in progress — currently building the core window/drag mechanic before adding apps.
+## ✅ Status
+Complete — full browser-based desktop shell with draggable, stackable windows, a dock, and desktop widgets.
 
-## Planned Apps
+## Apps
 - 🔍 Finder — Projects
-- 🧭 Safari — Links / resume
+- 🧭 Safari — Bookmarks grid with click-to-detail view and browser-style back/forward history
 - 🛍️ App Store — Current & upcoming projects
 - 📝 Notes — Notes / blog-style thoughts
-- 💻 Terminal — Fun terminal-style interactions
-- 🎵 Spotify — Favorite artists & songs
+- 💻 Terminal — Custom shell with commands (`clear`, `sudo`, etc.)
+- 🎵 Spotify — Favorite artists & songs, wired to the Spotify iFrame Embed API for real playback
 - 🎬 Netflix — Movie/drama recs
+- ⚙️ Settings — Wifi, Sound, Appearance (wallpaper picker, light/dark theming), General, Battery, Display, User
+
+## Desktop Widgets
+- 🎧 Now Playing — live playback synced with the Spotify app
+- 📅 Calendar — custom dropdown with today highlighting
 
 ## Tech Stack
 - HTML5
@@ -31,6 +36,9 @@ cd portfolio-os
 
 ## Screenshots
 
+![Desktop view](/assets/screenshots/desktop.png)
+![Terminal app](/assets/screenshots/terminal.png)
+![Finder app](/assets/screenshots/finder.png)
 
 ## License
 MIT

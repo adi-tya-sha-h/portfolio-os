@@ -79,7 +79,7 @@ body.light-theme{
     color:var(--text-color);
     border:none;
     padding:0px 10px;
-    cursor:pointer;
+    cursor:default;
 }
 .btn{
     height:27px;
@@ -89,7 +89,7 @@ body.light-theme{
     border:none;
     display:block;
     height:27px;
-    cursor:pointer;
+    cursor:default;
     color: var(--text-color);
     padding:0px 10px;
 }
@@ -367,6 +367,7 @@ footer{
 .heading{
     font-weight:bold;
     font-size:24px;
+    margin: 10px 0 0px 0;
 }
 
 .about-me{
@@ -935,6 +936,7 @@ footer{
     font-weight:700;
     margin-left: 20px;
     margin-right: 10px;
+    cursor:default;
 }
 .window[data-app="finder"] .content{
     padding:0;
@@ -985,12 +987,6 @@ footer{
     gap:10px;
     padding:16px 20px;
     flex-shrink:0;
-}
-
-.back-arrow{
-    display:flex;
-    cursor:pointer;
-    
 }
 
 .finder-title{
@@ -1116,6 +1112,7 @@ footer{
 
 .window[data-app="appstore"] .content {
     padding: 0;
+    
 }
 .app-store {
   height: 100%;
@@ -1235,6 +1232,8 @@ footer{
   flex: 1;
   overflow-y: auto;
   padding: 20px 20px;
+  scrollbar-width:thin;
+  scrollbar-color:rgb(255 255 255 / 4%) rgb(73 67 67 / 12%);
 }
 
 .app-store-heading {
@@ -1310,12 +1309,12 @@ footer{
 
 .game-media-row {
     flex:0;
-    flex-shrink:none;
-  display: flex;
-  gap: 12px;
-  overflow-x: auto;
-  padding-bottom: 4px;
-  scrollbar-width:none;
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(255 255 255 / 11%) rgb(73 67 67 / 12%);
 }
 
 .game-media {
@@ -1791,9 +1790,10 @@ footer{
     opacity: 0.4;
 }
 .back-arrow{
-    display:block;
+    display:flex;
     justify-content:center;
     align-items:center;
+    cursor:pointer;
 }
 .forward-arrow{
     display:block;
@@ -1891,4 +1891,92 @@ footer{
     max-width:780px;
     margin-left:auto;
     margin-right:auto;
+}
+
+.nav-dropdown{
+    position:fixed;
+}
+
+.nav-dropdown-options{
+    top:10px;
+    left:2px;
+    display: flex;
+    flex-direction: column;
+    width: 230px;
+    border-radius: 8px;
+    border:1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0.8;
+    background: var(--titlebar-bg);
+    position: absolute;
+    -webkit-backdrop-filter:blur(40px);
+    backdrop-filter: blur(40px);
+    padding:4px;
+    cursor:default;
+}
+
+.nav-dropdown-options span{
+    padding:4px 10px;
+    display:flex;
+    justify-content:space-between;
+}
+.nav-dropdown-options a{
+    color:var(--text-color);
+    font-size:14px;
+    font-weight:bold;
+    padding: 4px 10px;
+}
+.not-responsive{
+    opacity:0.5;
+    display:flex;
+    justify-content:space-between;
+}
+.responsive:hover{
+    background:orangered;
+    border-radius:5px;
+    /* margin-left:4px;
+    margin-right:4px; */
+}
+#clock{
+    cursor:default;
+}
+.initcmd {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.terminal-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font: inherit;
+  color: inherit;
+  padding: 0;
+  margin: 0;
+  color:white;
+}
+
+.window[data-app="trash"]{
+    height:450px;
+    width:720px;
+}
+.trash{
+    height:100%;
+    width:100%;
+}
+.trash-content{
+    height:100%;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    color:orangered;
+}
+.trash-content img{
+    display:block;
+    height:100px;
+    width:100px;
+    opacity:0.7;
 }

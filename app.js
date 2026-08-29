@@ -317,28 +317,42 @@ const apps = [
     </div>`, top: 45, left: 310 },
   { id: 'notes',   title: 'Notes',   html:` <div class="notes">
             <p class="heading">
-                <span>About Me</span>
+                <span style="color:orangered">About Me</span>
             </p>
 
-            <p class="about-me">
-                Hey!<br>
-                Myself Aditya Shah, a computer science student at Graphic Era Hill University, Dehradun.<br>
-                <br>
-                I'm currently strengthening my foundations in JavaScript, Data Structures & Algorithms, 
-                and modern web development while creating projects that combine functionality with thoughtful design.
-                I enjoy experimenting with animations, intuitive user interfaces, and immersive experiences,
-                such as my macOS-inspired portfolio.
-                <br>
-                <br>
-                Beyond coding, I love turning ideas into reality—whether it's developing creative side projects,
-                 contributing to open source, or continuously learning new technologies. 
-                 My goal is to become a developer who builds products that are both visually
-                 appealing and genuinely useful.
-                 <br>
-                 <br>
-                 When I'm not programming, you'll probably find me solving LeetCode problems, playing games or guitar, watching anime, or trying to fix my sleep schedule T.T .
-                
-            </p>
+            <div class="about-me">
+                <p>
+                    Hey! I’m <strong>Aditya Shah</strong>, a Computer Science student at 
+                    Graphic Era Hill University, Dehradun.
+                </p>
+
+                <p>
+                    I’m currently building a strong foundation in 
+                    <strong>JavaScript, Data Structures & Algorithms,</strong> and 
+                    <strong>modern web development</strong>, while turning what I learn into 
+                    projects that blend functionality with thoughtful design.
+                    I enjoy experimenting with animations, intuitive interfaces, and 
+                    immersive digital experiences — like my macOS-inspired portfolio.
+                </p>
+
+                <p>
+                    Beyond coding, I love turning ideas into something tangible. Whether it’s 
+                    building creative side projects, exploring new technologies, contributing 
+                    to open source, or simply experimenting with something I’ve never tried 
+                    before, I’m always looking for ways to learn and create.
+                </p>
+
+                <p>
+                    My goal is to become a developer who doesn’t just write code, but builds 
+                    products that feel intuitive, look great, and genuinely solve problems.
+                </p>
+
+                <p>
+                    When I’m not coding, you’ll probably find me solving 
+                    <strong>LeetCode</strong> problems, playing games or guitar, watching anime, 
+                    or pretending I’ll fix my sleep schedule tonight. T.T
+                </p>
+            </div>
         </div>`
     , top: 60, left: 345 },
   { id: 'setting', title: 'Settings', html: `
@@ -363,7 +377,12 @@ const apps = [
         <pre class="para">Welcome to ADI's Terminal. Write "cmd" to know the commands</pre>
         <pre class="initcmd">visitor@adi's-os ~ %  </pre></div>`,
          top: 80, left: 260 },
-  { id: 'trash', title: 'Trash', html: `<div><p>Your Haters</p></div>`
+  { id: 'trash', title: 'Trash', html: `<div class="trash">
+                <div class="trash-content">
+                    <img src="/assets/emptytrash.png">
+                    <span>Bin is Empty</span>
+                </div>
+            </div>`
     , top: 69, left: 350 }
 ];
 
@@ -583,10 +602,13 @@ dockButtons.forEach(button => {
     //     renderSafariGrid();
     // }
     if (id === 'safari') {
-    safariHistory = [{ view: 'grid' }];
-    historyPointer = 0;
-    renderFromHistory();
-}
+        safariHistory = [{ view: 'grid' }];
+        historyPointer = 0;
+        renderFromHistory();
+    }
+    if (id === 'terminal') {
+        initTerminal();
+    }
   });
 });
 
@@ -828,8 +850,8 @@ const projects = [
     { 
         title: 'Monitoring-System', 
         subtitle: 'restaurant-management', 
-        projectimg: '/assets/reze.jpg',
-        description: 'A restaurant monitoring and management system for tracking orders, staff, and operations in real time.'
+        projectimg: '/assets/projects/inventory.mp4',
+        description: 'A food tracking system to monitor food orders,restaurant inventory,billing and customer feedback.'
     }
 ];
 
@@ -1640,3 +1662,296 @@ function updateUrlBar(url) {
     // keep the lock icon, just swap the text after it
     urlBar.lastChild.textContent = ' ' + url;
 }
+
+// const menuButtons=document.querySelectorAll('.nav-btn-left');
+// const navMenu = document.querySelector('.nav-menu');
+// let activeMenu=null;
+
+// menuButtons.forEach(btn=>{
+//     btn.addEventListener('mouseenter',(e)=>{
+//         // e.stopPropagation();
+//         const menuName=btn.dataset.menu;
+//         const dropdown=document.querySelector(`[data-menu-content="${menuName}"]`);
+//         if(!dropdown) return;
+
+//         const isOpening=dropdown.hidden;
+//         closeAllMenus();
+
+//         if(isOpening){
+//             positionDropdown(btn,dropdown);
+//             dropdown.hidden=false;
+//             activeMenu=dropdown;
+//         }
+//     });
+// });
+
+// function positionDropdown(btn,dropdown){
+//     const rect=btn.getBoundingClientRect();
+//     dropdown.style.left=`${rect.left}px`;
+//     dropdown.style.top=`${rect.bottom}px`;
+// }
+
+// function closeAllMenus(){
+//     document.querySelectorAll('.nav-dropdown').forEach(d=>d.hidden=true);
+//     activeMenu=null;
+// }
+
+// function attachLeaveHandler(el) {
+//     el.addEventListener('mouseleave', (e) => {
+//         if (activeMenu && (activeMenu.contains(e.relatedTarget) || navMenu.contains(e.relatedTarget))) return;
+//         closeAllMenus();
+//     });
+// }
+
+// attachLeaveHandler(navMenu);
+// document.querySelectorAll('.nav-dropdown').forEach(attachLeaveHandler);
+// document.addEventListener('mouseout',closeAllMenus);/
+
+const menuButtons = document.querySelectorAll('.nav-btn-left');
+const navMenu = document.querySelector('.nav-menu');
+let activeMenu = null;
+let closeTimeout = null;
+
+function openMenu(btn) {
+    clearTimeout(closeTimeout);
+    const menuName = btn.dataset.menu;
+    const dropdown = document.querySelector(`[data-menu-content="${menuName}"]`);
+    if (!dropdown) return;
+    if (activeMenu === dropdown) return; // already open — do nothing, don't toggle
+    closeAllMenus();
+    positionDropdown(btn, dropdown);
+    dropdown.hidden = false;
+    activeMenu = dropdown;
+}
+
+function scheduleClose() {
+    clearTimeout(closeTimeout);
+    closeTimeout = setTimeout(closeAllMenus, 150);
+}
+
+menuButtons.forEach(btn => {
+    btn.addEventListener('mouseenter', () => openMenu(btn));
+});
+
+function positionDropdown(btn, dropdown) {
+    const rect = btn.getBoundingClientRect();
+    dropdown.style.left = `${rect.left}px`;
+    dropdown.style.top = `${rect.bottom}px`;
+}
+
+function closeAllMenus() {
+    document.querySelectorAll('.nav-dropdown').forEach(d => d.hidden = true);
+    activeMenu = null;
+}
+
+navMenu.addEventListener('mouseleave', scheduleClose);
+navMenu.addEventListener('mouseenter', () => clearTimeout(closeTimeout));
+
+document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+    dropdown.addEventListener('mouseleave', scheduleClose);
+    dropdown.addEventListener('mouseenter', () => clearTimeout(closeTimeout));
+});
+
+document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+    dropdown.addEventListener('click', (e) => {
+        const option = e.target.closest('.nav-dropdown-options span, .nav-dropdown-options a');
+        if (!option) return;
+        if(option.classList.contains('not-responsive')) return;
+
+        handleMenuAction(option.dataset.action);
+        closeAllMenus();
+    });
+});
+
+function handleMenuAction(action){
+    const activeWin=document.querySelector('.window.active');
+    switch(action){
+        case 'close-window':
+            if(!activeWin) return;
+            activeWin.remove();
+            document.querySelector('#active-app-name').textContent="Finder";
+            break;
+        case 'minimize-window':
+            if(!activeWin) return;
+            minimizeWindow(activeWin,activeWin.dataset.app);
+            break;
+        case 'maximize-window':
+            if(!activeWin) return;
+            toggleMaximize(activeWin);
+            break;
+        case 'open-terminal':
+            toggleWindow('terminal',apps.find(a=>a.id==='terminal'));
+            break;
+        case 'open-finder':
+            toggleWindow('finder',apps.find(a=>a.id==='finder'));
+            renderProjects();
+            workList();
+            break;
+        case 'open-safari':
+            toggleWindow('safari',apps.find(a=>a.id==='safari'));
+            safariHistory=[{view:'grid'}];
+            historyPointer=0;
+            renderFromHistory();
+            break;
+        case 'open-menu':
+
+        default:
+            console.warn('no handler for action:',action);
+    }
+}
+
+
+
+const commands = {
+  cmd: () => {
+    // return a string (or array of lines) listing all command names
+    return ['whoami','about','skills','projects','socials','contact','clear','sudo','date','neofetch']
+  },
+
+  help: () => commands.cmd(),
+
+  whoami: () => {
+    return ['hey myself aditya shah, i am 19 years old persueing btech cse in graphic era hill university currently exploring webdev >.<'];
+  },
+
+  about: () => {
+    return [
+        "Hey, Myself Aditya Shah, a computer science student at Graphic Era Hill University, Dehradun.",
+        "I'm currently strengthening my foundations in JavaScript, Data Structures & Algorithms, and modern web development while creating projects that combine functionality with thoughtful design. I enjoy experimenting with animations, intuitive user interfaces, and immersive experiences, such as my macOS-inspired portfolio.",
+        "Beyond coding, I love turning ideas into reality—whether it's developing creative side projects, contributing to open source, or continuously learning new technologies. My goal is to become a developer who builds products that are both visually appealing and genuinely useful.",
+        "When I'm not programming, you'll probably find me solving LeetCode problems, playing games or guitar, watching anime, or trying to fix my sleep schedule T.T ."
+    ];
+  },
+
+  skills: () => {
+    return [
+        'C++','HTML','CSS','javascript','python','C','github','OOPs'
+    ];
+  },
+
+  projects: () => {
+    // return project names + maybe "open Finder for details"
+    return [
+        'MacOS styled portfolio','NotesAi','Monitoring System','Amazon homepage','\n','for more details open finder (:'
+    ]
+  },
+
+  contact: () => {
+    // return email / contact line
+    return ['email:adityashah0989@gmail.com','telegram:@xishah']
+  },
+
+  date: () => {
+    // return new Date() formatted as a string
+    return [new Date().toString()];
+  },
+
+  neofetch: () => {
+    return [
+        "adi@portfolio-os",
+        "-----------------",
+        "OS: adi's-OS",
+        "Shell: zsh",
+        "Terminal: adi-term",
+    ];
+  },
+
+  sudo: () => {
+    return ['easter egg 2/3 found'];
+  }
+};
+
+let terminalContainer;
+const promptText = "visitor@adi's-os ~ %";
+
+function createPromptLine() {
+  const line = document.createElement('pre');
+  line.classList.add('initcmd');
+
+  const promptSpan = document.createElement('span');
+  promptSpan.textContent = promptText + " ";
+
+  const input = document.createElement('input');
+  input.classList.add('terminal-input');
+  input.type = 'text';
+  input.autocomplete = 'off';
+  input.spellcheck = false;
+
+  line.appendChild(promptSpan);
+  line.appendChild(input);
+  terminalContainer.appendChild(line);
+
+  input.focus();
+}
+
+function freezeInput(input, value) {
+  const frozen = document.createElement('span');
+  frozen.textContent = value;
+  input.replaceWith(frozen);
+}
+
+function renderOutputLines(lines) {
+  lines.forEach(lineText => {
+    const line = document.createElement('pre');
+    line.classList.add('para');
+    line.textContent = lineText;
+    terminalContainer.appendChild(line);
+  });
+}
+
+function executeCommand(rawInput) {
+  const key = rawInput.trim();
+
+  if (key === '') return;
+
+  if (key === 'clear') {
+    terminalContainer.innerHTML = `
+    <pre>Hey!</pre>
+        <pre class="para">Welcome to ADI's Terminal. Write "cmd" to know the commands</pre>
+    `
+    return;
+  }
+
+  if (commands[key]) {
+    const result = commands[key]();
+    renderOutputLines(result);
+  } else {
+    renderOutputLines([`command not found: ${key}`]);
+  }
+}
+
+document.body.addEventListener('keydown', (e) => {
+  if (e.target.matches('.terminal-input') && e.key === 'Enter') {
+    const value = e.target.value;
+    freezeInput(e.target, promptText + " " + value);
+    executeCommand(value);
+    createPromptLine();
+  }
+});
+function initTerminal() {
+    terminalContainer = document.querySelector('.terminal');
+    const existingPrompt = document.querySelector('.terminal .initcmd');
+    if (!existingPrompt) return;
+
+    existingPrompt.innerHTML = '';
+    const promptSpan = document.createElement('span');
+    promptSpan.textContent = promptText + " ";
+    const firstInput = document.createElement('input');
+    firstInput.classList.add('terminal-input');
+    firstInput.type = 'text';
+    firstInput.autocomplete = 'off';
+    firstInput.spellcheck = false;
+    existingPrompt.appendChild(promptSpan);
+    existingPrompt.appendChild(firstInput);
+    firstInput.focus();
+}
+
+document.addEventListener('click',(e)=>{
+    if(!(e.target.closest('.trash-content'))) return;
+    console.log("clicked");
+    const container=document.body.querySelector('.trash-content');
+    container.innerHTML=`
+        <img src="/assets/gtrashoat.png">
+        <span style="color:lightgreen">easter egg 3/3 found congratulations >.<</span>
+    `
+})
