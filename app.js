@@ -957,7 +957,6 @@ function workList() {
   }).join('');
 }
 
-
 document.body.addEventListener('click',(e)=>{
     const navItem= e.target.closest('.finder-nav-items');
     if(!navItem) return;
@@ -1663,50 +1662,6 @@ function updateUrlBar(url) {
     urlBar.lastChild.textContent = ' ' + url;
 }
 
-// const menuButtons=document.querySelectorAll('.nav-btn-left');
-// const navMenu = document.querySelector('.nav-menu');
-// let activeMenu=null;
-
-// menuButtons.forEach(btn=>{
-//     btn.addEventListener('mouseenter',(e)=>{
-//         // e.stopPropagation();
-//         const menuName=btn.dataset.menu;
-//         const dropdown=document.querySelector(`[data-menu-content="${menuName}"]`);
-//         if(!dropdown) return;
-
-//         const isOpening=dropdown.hidden;
-//         closeAllMenus();
-
-//         if(isOpening){
-//             positionDropdown(btn,dropdown);
-//             dropdown.hidden=false;
-//             activeMenu=dropdown;
-//         }
-//     });
-// });
-
-// function positionDropdown(btn,dropdown){
-//     const rect=btn.getBoundingClientRect();
-//     dropdown.style.left=`${rect.left}px`;
-//     dropdown.style.top=`${rect.bottom}px`;
-// }
-
-// function closeAllMenus(){
-//     document.querySelectorAll('.nav-dropdown').forEach(d=>d.hidden=true);
-//     activeMenu=null;
-// }
-
-// function attachLeaveHandler(el) {
-//     el.addEventListener('mouseleave', (e) => {
-//         if (activeMenu && (activeMenu.contains(e.relatedTarget) || navMenu.contains(e.relatedTarget))) return;
-//         closeAllMenus();
-//     });
-// }
-
-// attachLeaveHandler(navMenu);
-// document.querySelectorAll('.nav-dropdown').forEach(attachLeaveHandler);
-// document.addEventListener('mouseout',closeAllMenus);/
-
 const menuButtons = document.querySelectorAll('.nav-btn-left');
 const navMenu = document.querySelector('.nav-menu');
 let activeMenu = null;
@@ -1954,4 +1909,4 @@ document.addEventListener('click',(e)=>{
         <img src="/assets/gtrashoat.png">
         <span style="color:lightgreen">easter egg 3/3 found congratulations >.<</span>
     `
-})
+});
