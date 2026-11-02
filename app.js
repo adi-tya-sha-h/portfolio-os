@@ -1542,9 +1542,9 @@ document.body.addEventListener('click',(e)=>{
 })
 
 const safariSites=[
-    {name:'Portfolio OS',url:'macosportfolio.vercel.com',img:'/assets/websites/macOS.png'},
-    {name:'Notes Ai',url:'NotesAi.netlify.app',img:'/assets/websites/notesai.png'},
-    {name:'Amazon',url:'amazon.com',img:'/assets/websites/amazon.png'}
+    {name:'Portfolio OS',url:'macosportfolio.vercel.com',img:'/assets/websites/macOS.png',about:'A macOS-inspired portfolio website built with vanilla HTML, CSS, and JavaScript — draggable windows, a dock, and custom "apps" that showcase my work.'},
+    {name:'Notes Ai',url:'NotesAi.netlify.app',img:'/assets/websites/notesai.png',about:'Notes.ai an AI Study Notes & Quiz Generator. Paste your notes, lecture text, or study material — get back structured, exam-ready summaries and an interactive multiple-choice quiz to test yourself on the spot. '},
+    {name:'Amazon',url:'amazon.com',img:'/assets/websites/amazon.png',about:'This was my first project in web-dev a frontend clone of amazon.com using html and css to learn the basics of html and css'}
 ];
 
 function renderSafariGrid(){
@@ -1577,6 +1577,7 @@ function renderSafariDetail(site) {
         </div>
         <div class="safari-detail-title">${site.name}</div>
         <div class="safari-detail-subtitle">${site.url}</div>
+        <div class="safari-site-about">${site.about}</div>
     `;
 }
 
@@ -1644,7 +1645,7 @@ function renderFromHistory() {
 
     if (state.view === 'grid') {
         renderSafariGrid();
-        updateUrlBar('displace.agency');
+        updateUrlBar('Aditya-portfolio-OS.com');
     } else if (state.view === 'detail') {
         const site = safariSites[state.index];
         renderSafariDetail(site);
@@ -1910,3 +1911,38 @@ document.addEventListener('click',(e)=>{
         <span style="color:lightgreen">easter egg 3/3 found congratulations >.<</span>
     `
 });
+
+const resumeIcon = document.querySelector('.resume');
+
+// 1. SELECT
+resumeIcon.addEventListener('click', () => {
+    resumeIcon.classList.add('selected');
+});
+
+// 2. DESELECT
+document.addEventListener('click', (event) => {
+    if (!event.target.closest('.resume')) {
+        resumeIcon.classList.remove('selected');
+    }
+});
+
+// 3. OPEN
+resumeIcon.addEventListener('click', () => {
+    createWindow({
+        id: 'resume',
+        title: 'Resume',
+        html: getResumePreviewHtml(),
+        top: 100,
+        left: 340
+    });
+});
+
+// 4. PREVIEW CONTENT
+function getResumePreviewHtml() {
+    return `
+        <div class="resume-toolbar">
+            <a href="assets/resume.pdf" download>Download PDF</a>
+        </div>
+        <iframe class="resume-frame" src="assets/resume.pdf"></iframe>
+    `;
+}
