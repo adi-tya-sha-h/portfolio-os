@@ -80,6 +80,9 @@ const apps = [
             </nav>
             <main>
               <div class="hero">
+                  <video class="hero-video" autoplay loop playsinline>
+                      <source src="/assets/reze.mp4" type="video/mp4">
+                  </video>
                   <div class="hero-content">
                       <h1 class="hero-title">Chainsaw Man The Movie: Reze Arc</h1>
                       <div class="hero-meta">
